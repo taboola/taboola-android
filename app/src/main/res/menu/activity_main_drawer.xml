@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/xml_sample"
+            android:checked="true"
+            android:title="Xml Sample"/>
+        <item
+            android:id="@+id/dynamic_sample"
+            android:title="Dynamic sample"/>
+    </group>
+
+</menu>

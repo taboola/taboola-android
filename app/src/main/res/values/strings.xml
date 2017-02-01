@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Taboola sample</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eros elit, iaculis eu quam a, malesuada ultrices ex. Quisque imperdiet pulvinar risus, sit amet tincidunt dui facilisis et. Ut volutpat odio a nulla aliquet, quis lobortis dolor hendrerit. Aliquam mollis orci vitae risus cursus mollis. Praesent auctor leo quis accumsan ullamcorper. Sed maximus justo non dui venenatis varius. In in fermentum elit. Ut rutrum mi et leo volutpat imperdiet. Pellentesque nec commodo felis, vitae eleifend eros.
+       \n\n Ut eleifend suscipit nunc nec lobortis. Nam sed rutrum urna. Nam malesuada egestas lorem vel faucibus. Donec commodo lectus risus, ac vestibulum tortor interdum eu. Morbi a venenatis mi. Praesent pellentesque massa aliquet, iaculis ligula sit amet, consequat mi.
+       \n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales placerat tortor, ac congue diam varius eu. Aenean blandit sem in neque euismod, vel fermentum eros aliquet. In tincidunt sagittis libero vel iaculis. Phasellus laoreet urna non ante tincidunt mollis. Nullam justo turpis, condimentum vitae nulla nec, facilisis imperdiet dui. Etiam ac lacus ut ligula lacinia scelerisque. Proin nec nunc dolor.
+    </string>
+</resources>
