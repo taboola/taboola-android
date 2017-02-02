@@ -1,4 +1,4 @@
-# Tabooola Android SDK
+# Taboola Android SDK
 
 Version 1.001.0
 
@@ -15,7 +15,7 @@ Version 1.001.0
 1. Add the library .aar to your project (AndroidStudio)
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
- <uses-permission android:name="android.permission.INTERNET" />
+ `<uses-permission android:name="android.permission.INTERNET" />`
 
 3. Any activity which is intended to show TaboolaWidget should include the following attribute, to avoid reloading the Taboola recommendations multiple time unnecessarily: android:configChanges="orientation|screenSize|keyboardHidden"
 
