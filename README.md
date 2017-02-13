@@ -2,8 +2,6 @@
 
 Version 1.001.0
 
-[[TOC]]
-
 ## Getting Started
 
 ### Minimum requirements
