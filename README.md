@@ -1,6 +1,8 @@
 # Taboola Android SDK
-
-Version 1.001.0
+![Platform](https://img.shields.io/badge/platform-Android-green.svg)
+[ ![Download](https://api.bintray.com/packages/taboola-devops/taboola-android-sdk/android-sdk/images/download.svg) ](https://bintray.com/taboola-devops/taboola-android-sdk/android-sdk/_latestVersion)
+[ ![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)]
+(https://www.taboola.com/)
 
 ## Getting Started
 
