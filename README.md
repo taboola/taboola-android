@@ -4,6 +4,12 @@
 [ ![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)]
 (https://www.taboola.com/)
 
+## Table Of Contents
+1. [Getting Started](#getting-started)
+2. [Mediation](#mediation)
+3. [SDK Reference](#sdk-reference)
+
+
 ## 1. Getting Started
 
 ### 1.1. Minimum requirements
@@ -174,7 +180,7 @@ Taboola Android SDK supports mediation via these platforms:
 <TBD>
 
 
-## 3. SDK Refernce 
+## 3. SDK Reference 
 ### 3.1. Public Properties
 
 ##### publisher
