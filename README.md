@@ -5,9 +5,9 @@
 (https://www.taboola.com/)
 
 ## Table Of Contents
-1. [Getting Started](#getting-started)
-2. [Mediation](#mediation)
-3. [SDK Reference](#sdk-reference)
+1. [Getting Started](#1-getting-started)
+2. [Mediation](#2-mediation)
+3. [SDK Reference](#3-sdk-reference)
 
 
 ## 1. Getting Started
