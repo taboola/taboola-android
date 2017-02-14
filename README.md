@@ -5,9 +5,9 @@
 (https://www.taboola.com/)
 
 ## Table Of Contents
-1. [Getting Started](#1-getting-started)
-2. [Mediation](#2-mediation)
-3. [SDK Reference](#3-sdk-reference)
+1. [Getting Started](#getting-started)
+2. [Mediation](#mediation)
+3. [SDK Reference](#sdk-reference)
 
 
 ## 1. Getting Started
@@ -169,15 +169,77 @@ LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotif
 
 ## 2. Mediation
 
-#### Supported Ad Platforms
+#### 2.1. Supported Ad Platforms
 
 Taboola Android SDK supports mediation via these platforms:
 
-* DFP
-* AdMob
-* MoPub
+* [DFP](https://developers.google.com/mobile-ads-sdk/docs/dfp/android/custom-events)
+* [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
+* [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
 
-<TBD>
+#### 2.2 Required Setup
+In order to configure mediation of Taboola SDK via a 3rd party platform, follow the steps listed below. 
+
+1. Include the Taboola SDK in your app as explained under [1.2. Incorporating the SDK](#1-2-incorporating-the-sdk)
+
+2. In the required platform web managemnt interface, create a new "custom event" network named "Taboola", and fill the parameters as described [below](#2-3-parameters-for-custom-events-configuration).
+
+3. Target impressions from the newly created Taboola network into the required ad-units within your app.
+
+In this way, the platform would automatically use the Taboola SDK when an impression from Taboola should be displayed.
+
+These steps are similar between all platforms, more detailed information can be found in these links for the specific platforms:
+
+* [DFP](https://developers.google.com/mobile-ads-sdk/docs/dfp/android/custom-events)
+* [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
+* [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
+
+#### 2.3 Parameters for Custom Events configuration
+
+##### 2.3.1 DFP & AdMob
+* **Class name**: com.taboola.android.mediation.DfpCustomEventBanner
+* **Parameters**: Parameters for the Taboola SDK can be configured either from the DFP web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
+	* 	**Configuring from DFP web interface**: The "parameter" field in the DFP custom event configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***escaped double quotes***.
+
+	```javascript
+	{
+		\"publisher\":\"<publisher code>\",
+		\"mode\":\"<mode>\",
+		\"url\":\"<url>\",
+		\"placement\":\"<placement>\",
+		\"article\":\"auto\",
+		\"referrer\":\"<ref url>"
+	}
+```
+
+	* **Configuring within the app code**: Use the following DFP method to send a NetworkExtrasBundle to the TaboolaSDK. The Bundle should contain key/value pairs with the required parameters.
+	
+	```java
+	public AdRequest.Builder addNetworkExtrasBundle (Class<? extends MediationAdapter> adapterClass, Bundle networkExtras) 
+	```
+
+##### 2.3.2 MoPub
+* **Class name**: com.taboola.android.mediation.MoPubCustomEventBanner
+* **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
+	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
+
+	```
+	{
+  		"publisher": "<publisher>",
+  		"mode": "<mode>",
+  		"url": "http://www.example.com",
+  		"article": "auto",
+  		"pageType" : "<pageType>",
+  		"referrer": "http://www.example.com/ref"
+	}
+	```
+
+	* **Configuring within the app code**: Use the following MoPub method to send a map of LocalExtras to the TaboolaSDK. The Map should contain key/value pairs with the required parameters.
+	
+	```java
+	public void setLocalExtras(Map<String, Object> localExtras)
+	```
+	
 
 
 ## 3. SDK Reference 
