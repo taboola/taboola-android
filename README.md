@@ -6,8 +6,9 @@
 
 ## Table Of Contents
 1. [Getting Started](#1-getting-started)
-2. [Mediation](#2-mediation)
-3. [SDK Reference](#3-sdk-reference)
+2. [Example App](#2-example-app)
+3. [Mediation](#3-mediation)
+4. [SDK Reference](#4-sdk-reference)
 
 
 ## 1. Getting Started
@@ -167,9 +168,15 @@ LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
 LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotificationReceiver);
  ```
 
-## 2. Mediation
+## 2. Example App
+This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio. 
 
-#### 2.1. Supported Ad Platforms
+In case you encounter some issues when integrating the SDK into your app, try recreating the scenario within the example app. This might help isolate the problem, and in case you weren't able to solve it, you'll be able to send the example app with your recreated issue to Taboola's support for more help.
+
+
+## 3. Mediation
+
+#### 3.1. Supported Ad Platforms
 
 Taboola Android SDK supports mediation via these platforms:
 
@@ -177,12 +184,12 @@ Taboola Android SDK supports mediation via these platforms:
 * [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
 * [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
 
-#### 2.2 Required Setup
+#### 3.2 Required Setup
 In order to configure mediation of Taboola SDK via a 3rd party platform, follow the steps listed below. 
 
-1. Include the Taboola SDK in your app as explained under [1.2. Incorporating the SDK](#1-2-incorporating-the-sdk)
+1. Include the Taboola SDK in your app as explained under [1.2. Incorporating the SDK](#12-incorporating-the-sdk)
 
-2. In the required platform web managemnt interface, create a new "custom event" network named "Taboola", and fill the parameters as described [below](#2-3-parameters-for-custom-events-configuration).
+2. In the required platform web managemnt interface, create a new "custom event" network named "Taboola", and fill the parameters as described [below](#33-parameters-for-custom-events-configuration).
 
 3. Target impressions from the newly created Taboola network into the required ad-units within your app.
 
@@ -194,9 +201,9 @@ These steps are similar between all platforms, more detailed information can be 
 * [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
 * [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
 
-#### 2.3 Parameters for Custom Events configuration
+#### 3.3 Parameters for Custom Events configuration
 
-##### 2.3.1 DFP & AdMob
+##### 3.3.1 DFP & AdMob
 * **Class name**: com.taboola.android.mediation.DfpCustomEventBanner
 * **Parameters**: Parameters for the Taboola SDK can be configured either from the DFP web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
 	* 	**Configuring from DFP web interface**: The "parameter" field in the DFP custom event configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***escaped double quotes***.
@@ -218,7 +225,7 @@ These steps are similar between all platforms, more detailed information can be 
 	public AdRequest.Builder addNetworkExtrasBundle (Class<? extends MediationAdapter> adapterClass, Bundle networkExtras) 
 	```
 
-##### 2.3.2 MoPub
+##### 3.3.2 MoPub
 * **Class name**: com.taboola.android.mediation.MoPubCustomEventBanner
 * **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
 	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
@@ -242,8 +249,8 @@ These steps are similar between all platforms, more detailed information can be 
 	
 
 
-## 3. SDK Reference 
-### 3.1. Public Properties
+## 4. SDK Reference 
+### 4.1. Public Properties
 
 ##### publisher
 
@@ -283,7 +290,7 @@ Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScrip
 
 Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires
 
-### 3.2. Public methods
+### 4.2. Public methods
 
 ##### public void fetchContent()
 
