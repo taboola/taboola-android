@@ -1,16 +1,16 @@
 # Taboola Android SDK
-![Platform](https://img.shields.io/badge/platform-Android-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Android-green.svg)
 [ ![Download](https://api.bintray.com/packages/taboola-devops/taboola-android-sdk/android-sdk/images/download.svg) ](https://bintray.com/taboola-devops/taboola-android-sdk/android-sdk/_latestVersion)
 [ ![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)]
 (https://www.taboola.com/)
 
-## Getting Started
+## 1. Getting Started
 
-### Minimum requirements
+### 1.1. Minimum requirements
 
-* Android version 2.1  (android:minSdkVersion="9")
+* Android version 2.1  (```android:minSdkVersion="9"```)
 
-### Incorporating the SDK
+### 1.2. Incorporating the SDK
 
 1. Add the library dependency to your project
  ```groovy
@@ -28,7 +28,8 @@
     android:configChanges="orientation|screenSize|keyboardHidden">
  </activity>
  ```
-### Displaying Taboola recommendations widget
+ 
+### 1.3. Displaying Taboola recommendations widget
 
 To include Taboola recommendations in your app just add a `com.taboola.android.TaboolaWidget` to your UI.
 `TaboolaWidget` subclasses `ViewGroup` and behaves just like any other standard Android view.
@@ -63,7 +64,7 @@ taboola.fetchContent();
 
 5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
-### Setting the TaboolaWidget properties in code
+### 1.4. Setting the TaboolaWidget properties in code
 
 Optionally, you can set the TaboolaWidget attributes directly in code, rather than have them set in XML
 
@@ -81,7 +82,7 @@ taboola.setPublisher("<my-publisher>")
 taboola.fetchContent();
  ```
 
-### Intercepting recommendation clicks
+### 1.5. Intercepting recommendation clicks
 
 The default click behavior of TaboolaWidget is as follows:
 
@@ -98,7 +99,7 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic);
 public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
  ```
 
-#### taboolaViewItemClickHandler
+##### 1.5.1. taboolaViewItemClickHandler
 
 This method will be called every time a user clicks a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
 
@@ -108,7 +109,7 @@ This method will be called every time a user clicks a recommendation, right befo
 `isOrganic` indicates whether the item clicked was an organic content recommendation or not.
 **Best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which shows that piece of content.**
 
-##### Example:
+##### 1.5.1.1. Example:
  ```java
 @Override
 public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
@@ -120,25 +121,13 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
 }
  ```
 
-### Handling Taboola widget resize
+### 1.6. Handling Taboola widget resize
 
 `TaboolaWidget` may resize its height after loading recommendations, to make sure that the full content is displayed (based on the actual widget `mode` loaded).
 
 After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the `TaboolaEventListener`, to allow the host app to adjust its layout to the changes. (This behavior may be disabled by setting the property `autoResizeHeight` to `false`.)
 
-## Mediation
-
-#### Supported Ad Platforms
-
-Taboola Android SDK supports mediation via these platforms:
-
-* DFP
-* AdMob
-* MoPub
-
-<TBD>
-
-### Catching global notifications (broadcasts) from TaboolaWidget
+### 1.7. Catching global notifications (broadcasts) from TaboolaWidget
 
 `TaboolaWidget` fires app level broadcasts to notify registered objects within the app about certain event. Catching those events might be useful for implementing custom event mediation adapters for ad platforms not natively supported by Taboola Android SDK.
 
@@ -172,63 +161,77 @@ LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
 LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotificationReceiver);
  ```
 
-## Public Properties
+## 2. Mediation
 
-#### publisher
+#### Supported Ad Platforms
+
+Taboola Android SDK supports mediation via these platforms:
+
+* DFP
+* AdMob
+* MoPub
+
+<TBD>
+
+
+## 3. SDK Refernce 
+### 3.1. Public Properties
+
+##### publisher
 
 Mandatory. Sets the `publisher`  (can also be set via XML)
 
-#### mode
+##### mode
 
 Mandatory. Sets the widget display `mode` (can also be set via XML)
 
-#### placement
+##### placement
 
 Mandatory. Sets the widget `placement` (can also be set via XML)
 
-#### pageType
+##### pageType
 
 Mandatory. (Can also be set via XML)
 
-#### pageUrl
+##### pageUrl
 
 Mandatory. (Can also be set via XML)
 
-#### taboolaEventListener
+##### taboolaEventListener
 
 Optional. Attaches a `TaboolaEventListener` to the `TaboolaWidget`. Allows intercepting clicks and handle height resize events
 
-#### itemClickEnabled
+##### itemClickEnabled
 
 Optional. Default: `true`. (can also be set via XML)
 
-#### optionalPageCommands
+##### optionalPageCommands
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
-#### optionalModeCommands
+##### optionalModeCommands
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
-#### autoResizeHeight
+##### autoResizeHeight
 
 Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires
 
-## Public methods
+### 3.2. Public methods
 
-#### public void fetchContent()
+##### public void fetchContent()
 
 After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
 
-#### public void reset()
+##### public void reset()
 
 Resets the `TaboolaWidget`- All conents and pushed commands are cleared. New commands must be pushed before fetching data again.
 
-#### public void refresh()
+##### public void refresh()
 
 Refreshes the recommendations displayed on the `TaboolaWidget`.
 
-#### public void setLogLevel(Logger.Level logLevel)
+##### public void setLogLevel(Logger.Level logLevel)
 Set level of log output of the widget. (default level is `ERROR`)
 
-#### public void pushCommands(HashMap<String, String> arrCommands)
+##### public void pushCommands(HashMap<String, String> arrCommands)
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
