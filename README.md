@@ -21,7 +21,18 @@
 
 1. Add the library dependency to your project
  ```groovy
- compile 'com.taboola:android-sdk:1.1.0@aar'
+     compile 'com.taboola:android-sdk:1.+@aar'
+
+     // include if you want ads to be open in chrome tabs rather than in a default browser
+     compile 'com.android.support:customtabs:25.+'
+
+     // include if you are using DFP mediation
+     compile 'com.google.firebase:firebase-ads:10.+'
+
+     // include if you are using MoPub mediation
+     compile('com.mopub:mopub-sdk-banner:4.+@aar') {
+         transitive = true
+     }
  ```
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
