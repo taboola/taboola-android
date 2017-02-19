@@ -1,13 +1,14 @@
 # Taboola Android SDK
 ![Platform](https://img.shields.io/badge/Platform-Android-green.svg)
 [![Download](https://img.shields.io/badge/Version-1.1.0-blue.svg)](https://bintray.com/taboola-devops/taboola-android-sdk/android-sdk/_latestVersion)
-[![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)](https://www.taboola.com/)
+[![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)](https://github.com/taboola/taboola-android/blob/master/LICENSE)
 
 ## Table Of Contents
 1. [Getting Started](#1-getting-started)
 2. [Example App](#2-example-app)
 3. [Mediation](#3-mediation)
 4. [SDK Reference](#4-sdk-reference)
+5. [License](#5-license)
 
 
 ## 1. Getting Started
@@ -320,3 +321,8 @@ Set level of log output of the widget. (default level is `ERROR`)
 ##### public void pushCommands(HashMap<String, String> arrCommands)
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
+
+
+## 5. License
+This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
+Copyright 2017 Taboola, Inc.  All rights reserved.
