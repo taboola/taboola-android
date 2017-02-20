@@ -320,35 +320,6 @@ Set level of log output of the widget. (default level is `ERROR`)
 ##### `public void pushCommands(HashMap<String, String> arrCommands)`
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
-Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
-
-##### optionalModeCommands
-Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
-
-##### autoResizeHeight
-
-Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires
-
-### 4.2. Public methods
-
-##### public void fetchContent()
-
-After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
-
-##### public void reset()
-
-Resets the `TaboolaWidget`- All conents and pushed commands are cleared. New commands must be pushed before fetching data again.
-
-##### public void refresh()
-
-Refreshes the recommendations displayed on the `TaboolaWidget`.
-
-##### public void setLogLevel(Logger.Level logLevel)
-Set level of log output of the widget. (default level is `ERROR`)
-
-##### public void pushCommands(HashMap<String, String> arrCommands)
-Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
-(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
 
 ## 5. License
