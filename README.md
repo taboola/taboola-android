@@ -228,7 +228,7 @@ These steps are similar between all platforms, more detailed information can be 
 		\"article\":\"auto\",
 		\"referrer\":\"<ref url>"
 	}
-```
+	```
 
 	* **Configuring within the app code**: Use the following DFP method to send a NetworkExtrasBundle to the TaboolaSDK. The Bundle should contain key/value pairs with the required parameters.
 	
@@ -262,36 +262,64 @@ These steps are similar between all platforms, more detailed information can be 
 
 ## 4. SDK Reference 
 ### 4.1. Public Properties
-
-##### publisher
+##### `String publisher`
 
 Mandatory. Sets the `publisher`  (can also be set via XML)
 
-##### mode
+##### `String mode`
 
 Mandatory. Sets the widget display `mode` (can also be set via XML)
 
-##### placement
+##### `String placement`
 
 Mandatory. Sets the widget `placement` (can also be set via XML)
 
-##### pageType
+##### `String pageType`
 
 Mandatory. (Can also be set via XML)
 
-##### pageUrl
+##### `String pageUrl`
 
 Mandatory. (Can also be set via XML)
 
-##### taboolaEventListener
+##### `TaboolaEventListener taboolaEventListener`
 
 Optional. Attaches a `TaboolaEventListener` to the `TaboolaWidget`. Allows intercepting clicks and handle height resize events
 
-##### itemClickEnabled
+##### `boolean itemClickEnabled`
 
 Optional. Default: `true`. (can also be set via XML)
 
-##### optionalPageCommands
+##### `HashMap<String, String> optionalPageCommands`
+Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
+
+##### `HashMap<String, String> optionalModeCommands`
+Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
+
+##### `boolean autoResizeHeight`
+
+Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires
+
+### 4.2. Public methods
+
+##### `public void fetchContent()`
+
+After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
+
+##### `public void reset()`
+
+Resets the `TaboolaWidget`- All conents and pushed commands are cleared. New commands must be pushed before fetching data again.
+
+##### `public void refresh()`
+
+Refreshes the recommendations displayed on the `TaboolaWidget`.
+
+##### `public void setLogLevel(Logger.Level logLevel)`
+Set level of log output of the widget. (default level is `ERROR`)
+
+##### `public void pushCommands(HashMap<String, String> arrCommands)`
+Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
+(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
 ##### optionalModeCommands
