@@ -95,7 +95,8 @@ taboola.setPublisher("<my-publisher>")
         .setPlacement("<my-placement>")
         .setPageUrl("http://www.example.com")
         .setPageType("<my-page-type>");
-        
+
+// target_type should be set to "mix", unless specified otherwise by your Taboola account manager        
 HashMap<String,String> modeCommands = new HashMap<>();
 modeCommands.put("target_type","mix");
 taboola.setOptionalModeCommands(modeCommands);
