@@ -58,13 +58,13 @@ To include Taboola recommendations in your app just add a `com.taboola.android.T
  <com.taboola.android.TaboolaWidget
     android:id="@+id/taboola_view"
     android:layout_width="match_parent"
-    taboola:publisher="<my-publisher>"
-    taboola:mode="<my-mode>"
-    taboola:placement="Mobile below article"
-    taboola:pageUrl="http://example.com"
-    taboola:pageType="article"/>
+    taboola:publisher="<publisher-as-supplied-by-taboola>"
+    taboola:mode="<mode-as-supplied-by-taboola>"
+    taboola:placement="<placement-as-supplied-by-taboola>"
+    taboola:pageUrl="<public-web-url-which-reflects-the-current-content>"
+    taboola:pageType="<my-page-type>"/>
  ```
-2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `pageUrl`, `pageType`)
+2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `pageType`)
 
 3. In your `Activity` or `Fragment` code, declare an instance on `TaboolaWidget`
 
