@@ -92,9 +92,13 @@ TaboolaWidget taboola = (TaboolaWidget) findViewById(R.id.taboola_view);
 // Optional - set your content data parameters via code (instead of XML)
 taboola.setPublisher("<my-publisher>")
         .setMode("<my-mode>")
-        .setPlacement("Mobile")
+        .setPlacement("<my-placement>")
         .setPageUrl("http://www.example.com")
-        .setPageType("article");
+        .setPageType("<my-page-type>");
+        
+HashMap<String,String> modeCommands = new HashMap<>();
+modeCommands.put("target_type","mix");
+taboola.setOptionalModeCommands(modeCommands);
 
 // fetch and display recommendations
 taboola.fetchContent();
