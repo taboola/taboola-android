@@ -55,6 +55,7 @@ To include Taboola recommendations in your app just add a `com.taboola.android.T
 1. Include the XML block in your `Activity` or `Fragment` layout
 
  ```xml
+ <!-- Specify targetType only if it's specified by your Taboola account manager. -->
  <com.taboola.android.TaboolaWidget
     android:id="@+id/taboola_view"
     android:layout_width="match_parent"
@@ -62,9 +63,11 @@ To include Taboola recommendations in your app just add a `com.taboola.android.T
     taboola:mode="<mode-as-supplied-by-taboola>"
     taboola:placement="<placement-as-supplied-by-taboola>"
     taboola:pageUrl="<public-web-url-which-reflects-the-current-content>"
-    taboola:pageType="<my-page-type>"/>
+    taboola:pageType="<my-page-type>"
+    taboola:targetType="<my-page-type>"
+    />
  ```
-2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `pageType`)
+2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `pageUrl`, `pageType`)
 
 3. In your `Activity` or `Fragment` code, declare an instance on `TaboolaWidget`
 
@@ -96,10 +99,8 @@ taboola.setPublisher("<my-publisher>")
         .setPageUrl("http://www.example.com")
         .setPageType("<my-page-type>");
 
-// target_type should be set to "mix", unless specified otherwise by your Taboola account manager        
-HashMap<String,String> modeCommands = new HashMap<>();
-modeCommands.put("target_type","mix");
-taboola.setOptionalModeCommands(modeCommands);
+// Optional. Set targetType only if it's specified by your Taboola account manager
+taboola.setTargetType("<my-target-type>");
 
 // fetch and display recommendations
 taboola.fetchContent();
@@ -286,6 +287,11 @@ Mandatory. (Can also be set via XML)
 ##### `String pageUrl`
 
 Mandatory. (Can also be set via XML)
+
+##### `String targetType`
+
+Optional. Default: `"mix"`. (can also be set via XML).
+Change only if it's specified by your Taboola account manager.
 
 ##### `TaboolaEventListener taboolaEventListener`
 

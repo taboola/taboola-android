@@ -16,6 +16,7 @@
             android:layout_height="match_parent"
             android:text="@string/lorem_ipsum"/>
 
+        <!-- Specify targetType only if it's specified by your Taboola account manager. -->
         <com.taboola.android.TaboolaWidget
             android:id="@+id/taboola_widget"
             android:layout_width="match_parent"

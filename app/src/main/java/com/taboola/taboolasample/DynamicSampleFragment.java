@@ -31,6 +31,9 @@ public class DynamicSampleFragment extends Fragment {
                 .setPageUrl("http://www.example.com")
                 .setPlacement("Mobile");
 
+        // Optional. Set targetType only if it's specified by your Taboola account manager
+        // taboola.setTargetType("<my-target-type>");
+
         // Optional - Setting the event listener to intercept clicks and/or size changes
         taboola.setTaboolaEventListener(new TaboolaEventListener() {
             @Override
