@@ -1,6 +1,6 @@
 # Taboola Android SDK
 ![Platform](https://img.shields.io/badge/Platform-Android-green.svg)
-[![Download](https://img.shields.io/badge/Version-1.1.0-blue.svg)](https://bintray.com/taboola-devops/taboola-android-sdk/android-sdk/_latestVersion)
+[![Download](https://img.shields.io/badge/Version-1.1.1-blue.svg)](https://bintray.com/taboola-com/taboola-android-sdk/android-sdk/_latestVersion)
 [![License](https://img.shields.io/badge/License%20-Taboola%20SDK%20License-blue.svg)](https://github.com/taboola/taboola-android/blob/master/LICENSE)
 
 ## Table Of Contents
