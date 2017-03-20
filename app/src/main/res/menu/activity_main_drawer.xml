@@ -5,10 +5,13 @@
         <item
             android:id="@+id/xml_sample"
             android:checked="true"
-            android:title="Xml Sample"/>
+            android:title="@string/drawer_item_title_xml_sample"/>
         <item
             android:id="@+id/dynamic_sample"
-            android:title="Dynamic sample"/>
+            android:title="@string/drawer_item_title_dynamic_sample"/>
+        <item
+            android:id="@+id/configurable_page"
+            android:title="@string/drawer_item_title_configurable_page"/>
     </group>
 
 </menu>

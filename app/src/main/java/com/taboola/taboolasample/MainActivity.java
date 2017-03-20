@@ -2,6 +2,7 @@ package com.taboola.taboolasample;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -51,11 +52,23 @@ public class MainActivity extends AppCompatActivity
         item.setChecked(true);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (id == R.id.xml_sample) {
-            transaction.replace(R.id.container_main, new XmlSampleFragment());
-        } else if (id == R.id.dynamic_sample) {
-            transaction.replace(R.id.container_main, new DynamicSampleFragment());
+        Fragment fragmentToOpen;
+
+        switch (id) {
+            case R.id.xml_sample:
+                fragmentToOpen = new XmlSampleFragment();
+                break;
+            case R.id.dynamic_sample:
+                fragmentToOpen = new DynamicSampleFragment();
+                break;
+            case R.id.configurable_page:
+                fragmentToOpen = new ConfigFragment();
+                break;
+            default:
+                return false;
         }
+
+        transaction.replace(R.id.container_main, fragmentToOpen);
         transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

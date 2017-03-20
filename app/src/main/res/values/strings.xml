@@ -4,6 +4,25 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="drawer_item_title_xml_sample">Xml Sample</string>
+    <string name="drawer_item_title_dynamic_sample">Dynamic sample</string>
+    <string name="drawer_item_title_configurable_page">Test page</string>
+
+    <string name="config_button_text_reload">Reload widget</string>
+    <string name="config_button_text_edit">Edit properties</string>
+
+    <string name="prompt_publisher">"publisher"</string>
+    <string name="prompt_mode">"mode"</string>
+    <string name="prompt_placement">"placement"</string>
+    <string name="prompt_page_type">"page_type</string>
+    <string name="prompt_target_type">"target_type"</string>
+    <string name="prompt_page_url">"url"</string>
+    <string name="prompt_referrer">"referrer"</string>
+    <string name="prompt_article">article</string>
+    <string name="prompt_scroll_enabled">scroll_enabled</string>
+    <string name="prompt_auto_resize_height">auto_resize_height</string>
+    <string name="prompt_item_click_enabled">item_click_enabled</string>
+
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at hendrerit odio, eget placerat velit. Proin risus dui, malesuada vitae interdum a, tincidunt id lectus. Sed consequat nisi tempus, venenatis nunc non, ornare lectus. Sed hendrerit dui nibh, suscipit vestibulum dui pharetra quis. Integer vitae elit arcu. Integer pretium a ligula interdum pharetra. Quisque sit amet augue et massa sagittis tempus et id libero. Curabitur neque mauris, elementum ut gravida id, venenatis vel arcu. Nam sed hendrerit mi.
         \n\n Integer interdum auctor sem, a dictum nisl porta in. Suspendisse gravida ultrices elementum. Nam sed egestas dui. Nunc quis mi pellentesque, vehicula leo at, auctor nunc. Vestibulum neque velit, vehicula at convallis sodales, cursus et magna. Praesent ut odio facilisis, faucibus arcu nec, laoreet enim. Donec dolor felis, elementum eu dictum ut, porttitor ut libero. Integer iaculis semper molestie. Aliquam feugiat id lacus sit amet molestie.
         \n\n Donec elementum lacinia libero, ut volutpat leo tincidunt a. Suspendisse potenti. Nulla facilisi. Donec vitae lorem hendrerit, fermentum erat eget, suscipit ex. Integer sodales massa ut risus finibus sodales. Cras fringilla enim ac scelerisque congue. Pellentesque gravida vitae velit eu pulvinar. Quisque magna mauris, viverra ut magna sed, scelerisque venenatis felis. Duis at nulla lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas a sagittis urna.
