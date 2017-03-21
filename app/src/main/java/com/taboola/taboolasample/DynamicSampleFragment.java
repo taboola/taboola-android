@@ -25,8 +25,8 @@ public class DynamicSampleFragment extends Fragment {
         LinearLayout adContainer = (LinearLayout) rootView.findViewById(R.id.ad_container);
 
         TaboolaWidget taboola = new TaboolaWidget(getContext());
-        taboola.setPublisher("betterbytheminute")
-                .setMode("thumbnails-a")
+        taboola.setPublisher("betterbytheminute-app")
+                .setMode("thumbnails-sdk3")
                 .setPageType("article")
                 .setPageUrl("http://www.example.com")
                 .setPlacement("Mobile");

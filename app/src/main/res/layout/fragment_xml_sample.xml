@@ -21,11 +21,11 @@
             android:id="@+id/taboola_widget"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            taboola:mode="thumbnails-a"
+            taboola:mode="thumbnails-sdk3"
             taboola:pageType="article"
             taboola:pageUrl="http://example.com"
             taboola:placement="Mobile"
-            taboola:publisher="betterbytheminute"/>
+            taboola:publisher="betterbytheminute-app"/>
 
     </LinearLayout>
 
