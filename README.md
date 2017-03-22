@@ -55,19 +55,19 @@ To include Taboola recommendations in your app just add a `com.taboola.android.T
 1. Include the XML block in your `Activity` or `Fragment` layout
 
  ```xml
- <!-- Specify targetType only if it's specified by your Taboola account manager. -->
+ <!-- Specify target_type only if it's specified by your Taboola account manager. -->
  <com.taboola.android.TaboolaWidget
     android:id="@+id/taboola_view"
     android:layout_width="match_parent"
     taboola:publisher="<publisher-as-supplied-by-taboola>"
     taboola:mode="<mode-as-supplied-by-taboola>"
     taboola:placement="<placement-as-supplied-by-taboola>"
-    taboola:pageUrl="<public-web-url-which-reflects-the-current-content>"
-    taboola:pageType="<my-page-type>"
-    taboola:targetType="<my-page-type>"
+    taboola:url="<public-web-url-which-reflects-the-current-content>"
+    taboola:page_type="<my-page-type>"
+    taboola:target_type="<my-page-type>"
     />
  ```
-2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `pageUrl`, `pageType`)
+2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `url`, `page_type`)
 
 3. In your `Activity` or `Fragment` code, declare an instance on `TaboolaWidget`
 
@@ -253,7 +253,7 @@ These steps are similar between all platforms, more detailed information can be 
   		"mode": "<mode>",
   		"url": "http://www.example.com",
   		"article": "auto",
-  		"pageType" : "<pageType>",
+  		"page_type" : "<page_type>",
   		"referrer": "http://www.example.com/ref"
 	}
 	```
@@ -270,46 +270,46 @@ These steps are similar between all platforms, more detailed information can be 
 ### 4.1. Public Properties
 ##### `String publisher`
 
-Mandatory. Sets the `publisher`  (can also be set via XML)
+Mandatory. Sets the `publisher`  (can also be set via XML as `publisher`)
 
 ##### `String mode`
 
-Mandatory. Sets the widget display `mode` (can also be set via XML)
+Mandatory. Sets the widget display `mode` (can also be set via XML as `mode`)
 
 ##### `String placement`
 
-Mandatory. Sets the widget `placement` (can also be set via XML)
+Mandatory. Sets the widget `placement` (can also be set via XML as `placement`)
 
 ##### `String pageType`
 
-Mandatory. (Can also be set via XML)
+Mandatory. (Can also be set via XML as `page_type`)
 
 ##### `String pageUrl`
 
-Mandatory. (Can also be set via XML)
+Mandatory. (Can also be set via XML as `url`)
 
 ##### `String targetType`
 
-Optional. Default: `"mix"`. (can also be set via XML).
+Optional. Default: `"mix"`. (can also be set via XML as `target_type`).
 Change only if it's specified by your Taboola account manager.
+
+##### `boolean itemClickEnabled`
+
+Optional. Default: `true`. (can also be set via XML as `item_click_enabled`)
+
+##### `boolean autoResizeHeight`
+
+Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires (can also be set via XML as `auto_resize_height`)
 
 ##### `TaboolaEventListener taboolaEventListener`
 
 Optional. Attaches a `TaboolaEventListener` to the `TaboolaWidget`. Allows intercepting clicks and handle height resize events
-
-##### `boolean itemClickEnabled`
-
-Optional. Default: `true`. (can also be set via XML)
 
 ##### `HashMap<String, String> optionalPageCommands`
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
 ##### `HashMap<String, String> optionalModeCommands`
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
-
-##### `boolean autoResizeHeight`
-
-Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires
 
 ### 4.2. Public methods
 

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.taboola.taboolasample"
         minSdkVersion 9
@@ -23,7 +23,7 @@ dependencies {
     compile 'com.taboola:android-sdk:1.+@aar'
 
     // include if you want ads to be open in chrome tabs rather than in a default browser
-    compile 'com.android.support:customtabs:25.+'
+    compile 'com.android.support:customtabs:25.1.1'
 
     // include if you are using DFP mediation
     compile 'com.google.firebase:firebase-ads:10.0.1'

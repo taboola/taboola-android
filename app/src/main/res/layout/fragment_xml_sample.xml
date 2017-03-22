@@ -16,14 +16,14 @@
             android:layout_height="match_parent"
             android:text="@string/lorem_ipsum"/>
 
-        <!-- Specify targetType only if it's specified by your Taboola account manager. -->
+        <!-- Specify target_type only if it's specified by your Taboola account manager. -->
         <com.taboola.android.TaboolaWidget
             android:id="@+id/taboola_widget"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             taboola:mode="thumbnails-sdk3"
-            taboola:pageType="article"
-            taboola:pageUrl="http://example.com"
+            taboola:page_type="article"
+            taboola:url="http://example.com"
             taboola:placement="Mobile"
             taboola:publisher="betterbytheminute-app"/>
 
