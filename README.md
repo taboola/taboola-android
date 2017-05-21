@@ -23,10 +23,10 @@
  ```groovy
      compile 'com.taboola:android-sdk:1.+@aar'
 
-     // include if you want ads to be open in chrome tabs rather than in a default browser
+     // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      compile 'com.android.support:customtabs:25.+'
 
-     // include if you are using DFP mediation
+     // include if you are using DFP mediation 
      compile 'com.google.firebase:firebase-ads:10.+'
 
      // include if you are using MoPub mediation
@@ -34,6 +34,9 @@
          transitive = true
      }
  ```
+> ## Notice
+> the + notation in gradle sdk version number is only a suggestion. We encourgae developers to use the latest SDK version. Taboola SDK will remain backword compatible between minor versions.
+
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
  ```xml
