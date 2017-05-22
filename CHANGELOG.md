@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.1.8] - 2017-04-26
+## [1.1.8] - 2017-05-22
 ### Changed
 - Fix bug on earlier versions of Android with low memory
 
