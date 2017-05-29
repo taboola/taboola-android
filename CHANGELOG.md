@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.1.9] - 2017-05-29
+### Changed
+- Improve organic/sponsored links detection
+
 ## [1.1.8] - 2017-05-22
 ### Changed
 - Fix bug on earlier versions of Android with low memory
