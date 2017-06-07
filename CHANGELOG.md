@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.2.0] - 2017-06-07
+## [1.1.10] - 2017-06-07
 ### Changed
 - Fix bug in android version lower than 23
 
