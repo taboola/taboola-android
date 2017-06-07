@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.2.0] - 2017-06-07
+### Changed
+- Fix bug in android version lower than 23
+
 ## [1.1.9] - 2017-05-29
 ### Changed
 - Improve organic/sponsored links detection
