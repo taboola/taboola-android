@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.12] - 2017-06-22
+### Changed
+- Fix bug in resize widget
+- Fix bug in organic/sponsored detection
+
 ## [1.1.11] - 2017-06-07
 ### Changed
 - Fix bug in android version lower than 23
