@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Taboola Native sample 4</string>
+    <string name="button_turn_on">Turn on</string>
+    <string name="button_turn_off">Turn off</string>
+    <string name="attribution_view_text">By Taboola</string>
+
+
+</resources>

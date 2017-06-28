@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Taboola Native sample 2</string>
+    <string name="lorem_ipsum1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus nibh quis ipsum feugiat vulputate vitae et felis. In fringilla, urna eu dignissim volutpat, sem felis hendrerit libero, nec condimentum mi neque iaculis tortor. Praesent eu justo sem. Ut nec congue lorem. Nam feugiat ipsum sapien, ac posuere neque efficitur sit amet. Sed nunc tellus, tempus cursus leo quis, varius porta libero. Donec elementum quis quam id tincidunt.
+    </string>
+    <string name="lorem_ipsum2">
+        Pellentesque leo felis, porta nec tempus scelerisque, eleifend ut elit. Nunc sagittis pulvinar neque a hendrerit. Mauris hendrerit nisl non nisl efficitur tincidunt. Curabitur luctus eros ac maximus mollis. Maecenas ut rutrum lacus, sed consectetur leo. Pellentesque ultricies, nibh ut scelerisque dignissim, est dolor condimentum nisl, vitae dictum magna urna at elit. Maecenas a cursus ligula. Morbi ultrices sapien eleifend congue sodales. Etiam blandit enim dolor. Nulla mattis facilisis orci, at tincidunt arcu cursus quis.
+    </string>
+    <string name="lorem_ipsum3">Phasellus tristique in mi eget interdum. Nullam eleifend turpis non nisi placerat sagittis. Phasellus nec porta est. Ut condimentum ullamcorper massa et lacinia. In in tortor leo. In hac habitasse platea dictumst. Phasellus in rhoncus dui, quis efficitur nisi. Nulla nulla dolor, tempor sed ipsum non, consectetur tempor dolor. Maecenas vel urna sed magna tincidunt fringilla nec a nisl. Proin cursus tortor vel efficitur ornare. Vivamus faucibus justo ac lobortis tristique. Nulla scelerisque neque nec diam lobortis elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent semper massa at est facilisis, ac commodo eros vehicula.</string>
+    <string name="lorem_ipsum4">
+        Nam eget sagittis elit. Suspendisse et velit ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam blandit iaculis. Aliquam tempus gravida maximus. Mauris diam elit, ornare et consectetur sed, tempor sit amet sem. Vivamus nisl massa, rhoncus sed laoreet nec, congue ut mi. Morbi in arcu laoreet urna viverra venenatis. Etiam egestas luctus feugiat. Praesent auctor quis libero eu ultrices.
+    </string>
+    <string name="lorem_ipsum5">
+        Suspendisse urna tortor, tempus sit amet elit in, posuere porttitor dui. Sed sollicitudin convallis odio, sit amet ornare justo feugiat sit amet. Integer eu scelerisque enim, tempus sagittis massa. Proin vel metus id augue sollicitudin suscipit. Nulla ultrices, nisl in ornare sollicitudin, sapien nunc consectetur dui, eu lobortis nisi ipsum non nunc. Quisque et massa urna. Sed quam purus, pretium ac ex nec, tempor placerat mauris.
+    </string>
+    <string name="attribution_view_text">By Taboola</string>
+</resources>
