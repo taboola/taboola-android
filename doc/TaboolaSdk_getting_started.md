@@ -31,7 +31,7 @@
    compile 'com.squareup.picasso:picasso:2.5.2'
  ```
 > ## Notice
-> the + notation in gradle sdk version number is only a suggestion. We encourgae developers to use the latest SDK version. Taboola SDK will remain backword compatible between minor versions.
+> the + notation in gradle sdk version number is only a suggestion. We encourgae developers to use the latest SDK version. Taboola SDK will remain backward compatible between minor versions.
 
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
@@ -48,7 +48,7 @@ In your `Application` class
        @Override
        public void onCreate() {
            super.onCreate();
-           TaboolaSdk.getInstance().init(getApplicationContext(),
+           TaboolaApi.getInstance().init(getApplicationContext(),
                    "<publisher-as-supplied-by-taboola>",
                    "<api-key-as-supplied-by-taboola>");
        }
@@ -84,7 +84,7 @@ Create `TBRecommendationsRequest` and add all `TBPlacementRequest`s to it
 
 ### 1.5. Fetch Taboola recommendations
 ```java
-   TaboolaSdk.getInstance().fetchRecommendations(recommendationsRequest, new TBRecommendationRequestCallback() {
+   TaboolaApi.getInstance().fetchRecommendations(recommendationsRequest, new TBRecommendationRequestCallback() {
        @Override
        public void onRecommendationsFetched(TBRecommendationsResponse response) {
            // map where a Key is the Placements name (you can store it as a member variable for convenience)
@@ -115,14 +115,14 @@ Attribution view is a view with localized "By Taboola" text and icon.
 Call `handleAttributionClick()` every time this view is clicked 
 ```java
    public void onAttributionClick() {
-       TaboolaSdk.getInstance().handleAttributionClick(MainActivity.this);
+       TaboolaApi.getInstance().handleAttributionClick(MainActivity.this);
    }
 ```
 
 ### 1.8 Request next batch of the recommendations for placement
 Used for implementing pagination or infinite scroll (load more items as the user scrolls down). The method gets the next batch of recommendation items for a specified placement. The name of the returned Placement will have a "counter" added as a suffix. For example, if the original placement name was "article" the new name will be "article 1", next one "article 2", and so on. The counter is incremented on each successful fetch.
 ```Java
-   TaboolaSdk.getInstance().getNextBatchForPlacement(mPlacement, optionalCount, new TBRecommendationRequestCallback() {
+   TaboolaApi.getInstance().getNextBatchForPlacement(mPlacement, optionalCount, new TBRecommendationRequestCallback() {
            @Override
            public void onRecommendationsFetched(TBRecommendationsResponse response) {
                TBPlacement placement = response.getPlacementsMap().values().iterator().next(); // there will be only one placement
@@ -144,12 +144,12 @@ The default click behavior of TaboolaWidget is as follows:
 * On devices where Chrome custom tab is supported - open the recommendation in a chrome custom tab (in-app)
 * Otherwise - open the recommendation in the system default web browser (outside of the app) 
 
-Taboola Sdk allows app developers to intercept recommendation clicks in order to create a click-through or to override the default way of opening the recommended article. 
+TaboolaApi allows app developers to intercept recommendation clicks in order to create a click-through or to override the default way of opening the recommended article. 
 
-In order to intercept clicks, you should implement the interface `com.taboola.android.sdk.TaboolaOnClickListener` and set it in the sdk.
+In order to intercept clicks, you should implement the interface `com.taboola.android.api.TaboolaOnClickListener` and set it in the sdk.
 
 ```java
-   TaboolaSdk.getInstance().setOnClickListener(new TaboolaOnClickListener() {
+   TaboolaApi.getInstance().setOnClickListener(new TaboolaOnClickListener() {
        @Override
        public boolean onItemClick(String placementName, String itemId, String clickUrl, boolean isOrganic) {
            return false;
@@ -167,7 +167,7 @@ This method will be called every time a user clicks a recommendation, right befo
 **Best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which shows that piece of content.**
 
 ## 2. Example App
-This repository includes an example Android app which uses the Taboola SDK.
+This repository includes an example Android app which uses the `TaboolaApi`.
 
 ## 4. SDK Reference 
 
