@@ -1,20 +1,20 @@
 # Taboola Native SDK Reference
 -
-**Note**: if you haven't been specifically instructed by your Tabooola account manager to use this section of TaboolaSDK, you should probably use [TaboolaWidget](../README.md]) which is faster and more simple to integrate. 
+**Note**: if you haven't been specifically instructed by your Tabooola account manager to use this section of TaboolaApi, you should probably use [TaboolaWidget](../README.md]) which is faster and more simple to integrate. 
 
 -
-# TaboolaSdk
+# TaboolaApi
 
-### `public TaboolaSdk init(Context applicationContext, String publisherId, String apiKey)`
+### `public TaboolaApi init(Context applicationContext, String publisherId, String apiKey)`
 
-Initializes TaboolaSdk. Must be called before any other method of the SDK. Typically you would want to do it in you Application class in OnCreate()
+Initializes TaboolaApi. Must be called before any other method of the SDK. Typically you would want to do it in you Application class in OnCreate()
 
 #### **Parameters:**
    * `applicationContext` — Application Context
    * `publisherId` — The publisher id in the Taboola system
    * `apiKey` — The API key that was provided by Taboola for the application
    
-### `public static TaboolaSdk getInstance()`
+### `public static TaboolaApi getInstance()`
 
 #### **Returns:** 
 * a singleton instance of the SDK
@@ -29,7 +29,7 @@ Requests recommendation items.
 
 ### `public void getNextBatchForPlacement(TBPlacement placement, final TBRecommendationRequestCallback callback)`
 
-Used for implementing pagination or inifinite scroll (load more items as the user scrolls down). 
+Used for implementing pagination or infinite scroll (load more items as the user scrolls down). 
 The method gets the next batch of recommendation items for a specified placement. The number of recommendation items in the batch will be the same as in the last request. The name of the returned Placement will have a "counter" added as a suffix. For example, if the original placement name was "article" the new name will be "article 1", next one "article 2", and so on. The counter is incremented on each successful fetch. 
 
 #### **Parameters:**
@@ -54,15 +54,15 @@ This method **Must** be called when the user clicks on the attribution view ("By
 #### **Parameters:** 
 * `activityContext` — is used to display popup
 
-### `public TaboolaSdk setOnClickListener(TaboolaOnClickListener onClickListener)`
+### `public TaboolaApi setOnClickListener(TaboolaOnClickListener onClickListener)`
 
-TaboolaSdk allows to intercept recommendation clicks and block default click handling for organic items. If you want to block the default behavior in order to open the link to your organic content natively within your app, return `false` in `TaboolaOnClickListener#onItemClick(String, String, String, boolean)`
+TaboolaApi allows to intercept recommendation clicks and block default click handling for organic items. If you want to block the default behavior in order to open the link to your organic content natively within your app, return `false` in `TaboolaOnClickListener#onItemClick(String, String, String, boolean)`
 
 The return value will be ignored for non-organic items.
 
 The listener will be called every time a user clicks a recommendation, right before triggering the default behavior
 
-### `public TaboolaSdk setOnClickIgnoreTimeMs(int onClickIgnoreTimeMs)`
+### `public TaboolaApi setOnClickIgnoreTimeMs(int onClickIgnoreTimeMs)`
 
 To avoid accidental user clicks, the TB views will ignore clicks that were done immediately after the view became visible.
 
@@ -75,7 +75,7 @@ To avoid accidental user clicks, the TB views will ignore clicks that were done 
 
 Sets log level for the SDK. You can find logLevel constants in the `Logger` class, for example `Logger.DEBUG`.
 
-### `public TaboolaSdk setImagePlaceholder(Drawable placeholderDrawable)`
+### `public TaboolaApi setImagePlaceholder(Drawable placeholderDrawable)`
 
 #### **Parameters:**
 * `placeholderDrawable` — A placeholder drawable to be used while the image is being loaded.
@@ -279,7 +279,7 @@ Ignores visibility requirements for the click.
 
 ### `boolean onItemClick(String placementName, String itemId, String clickUrl, boolean isOrganic)`
 
-TaboolaSdk allows to intercept recommendation clicks and block default click handling for organic items. If you want to block the default behavior in order to open the link to your organic content natively within your app, return `false`.
+TaboolaApi allows to intercept recommendation clicks and block default click handling for organic items. If you want to block the default behavior in order to open the link to your organic content natively within your app, return `false`.
 
 The return value will be ignored for non-organic items.
 
