@@ -11,13 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.taboola.android.sdk.TBPlacement;
-import com.taboola.android.sdk.TBPlacementRequest;
-import com.taboola.android.sdk.TBRecommendationItem;
-import com.taboola.android.sdk.TBRecommendationRequestCallback;
-import com.taboola.android.sdk.TBRecommendationsRequest;
-import com.taboola.android.sdk.TBRecommendationsResponse;
-import com.taboola.android.sdk.TaboolaSdk;
+import com.taboola.android.api.TBPlacement;
+import com.taboola.android.api.TBPlacementRequest;
+import com.taboola.android.api.TBRecommendationItem;
+import com.taboola.android.api.TBRecommendationRequestCallback;
+import com.taboola.android.api.TBRecommendationsRequest;
+import com.taboola.android.api.TBRecommendationsResponse;
+import com.taboola.android.api.TaboolaApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAttributionClick(View view) {
-        TaboolaSdk.getInstance().handleAttributionClick(this);
+        TaboolaApi.getInstance().handleAttributionClick(this);
     }
 
     private void onRecommendationsFetched(TBPlacement placement) {
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         TBRecommendationsRequest request = new TBRecommendationsRequest("http://example.com", "text");
         request.addPlacementRequest(placementRequest);
 
-        TaboolaSdk.getInstance().fetchRecommendations(request, new TBRecommendationRequestCallback() {
+        TaboolaApi.getInstance().fetchRecommendations(request, new TBRecommendationRequestCallback() {
             @Override
             public void onRecommendationsFetched(TBRecommendationsResponse response) {
                 MainActivity.this.onRecommendationsFetched(response.getPlacementsMap().get(placementName));
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadNextRecommendationsBatch() {
-        TaboolaSdk.getInstance().getNextBatchForPlacement(mPlacement, new TBRecommendationRequestCallback() {
+        TaboolaApi.getInstance().getNextBatchForPlacement(mPlacement, new TBRecommendationRequestCallback() {
             @Override
             public void onRecommendationsFetched(TBRecommendationsResponse response) {
                 TBPlacement placement = response.getPlacementsMap().values().iterator().next(); // there will be only one placement

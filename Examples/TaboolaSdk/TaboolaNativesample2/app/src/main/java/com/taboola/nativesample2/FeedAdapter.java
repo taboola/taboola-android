@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.taboola.android.sdk.TBImageView;
-import com.taboola.android.sdk.TBRecommendationItem;
+import com.taboola.android.api.TBImageView;
+import com.taboola.android.api.TBRecommendationItem;
 
 import java.util.List;
 
