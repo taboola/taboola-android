@@ -252,11 +252,11 @@ These steps are similar between all platforms, more detailed information can be 
 
 	```
 	{
-  		"publisher": "<publisher>",
-  		"mode": "<mode>",
+  		"publisher": "publisher",
+  		"mode": "mode",
   		"url": "http://www.example.com",
   		"article": "auto",
-  		"page_type" : "<page_type>",
+  		"page_type" : "page_type",
   		"referrer": "http://www.example.com/ref"
 	}
 	```
