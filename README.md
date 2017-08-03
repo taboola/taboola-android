@@ -248,7 +248,7 @@ These steps are similar between all platforms, more detailed information can be 
 ##### 3.3.2 MoPub
 * **Class name**: com.taboola.android.mediation.MoPubCustomEventBanner
 * **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
-	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
+	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom native network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
 
 	```
 	{
