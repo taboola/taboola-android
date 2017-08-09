@@ -130,7 +130,7 @@ public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
 
 This method will be called every time a user clicks a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
 
-* Return **`false`** - abort the default behavior, the app should display the recommendation content on its own (for example, using an in-app browser).
+* Return **`false`** - abort the default behavior, the app should display the recommendation content on its own (for example, using an in-app browser). (Since 1.2.1 aborts only for organic items!)
 * Return **`true`** - this will allow the app to implement a click-through and continue to the default behaviour.
 
 `isOrganic` indicates whether the item clicked was an organic content recommendation or not.
