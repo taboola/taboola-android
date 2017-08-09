@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.2.1] - 2017-08-09
+### Changed
+- Overriding default click handling for non-organic items is no longer allowed
+- Fix incorrect `TABOOLA_DID_FAILAD` reporting in Widget
+
 ## [1.1.12] - 2017-06-22
 ### Changed
 - Fix bug in resize widget
