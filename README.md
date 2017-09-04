@@ -35,7 +35,7 @@
      }
  ```
 > ## Notice
-> We encourgae developers to use the latest SDK version. In order to stay up-to-date we suggest to subscribe to get github notifications whenever there is a new release. for more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
+> We encourgae developers to use the latest SDK version. In order to stay up-to-date we suggest subscribing to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
 
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
