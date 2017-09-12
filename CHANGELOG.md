@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.1] - 2017-09-12
+### Fixed
+- Internal bug fixes
+
 ## [1.2.1] - 2017-08-09
 ### Changed
 - Overriding default click handling for non-organic items is no longer allowed
