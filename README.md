@@ -96,8 +96,8 @@ Optionally, you can set the TaboolaWidget attributes directly in code, rather th
 TaboolaWidget taboola = (TaboolaWidget) findViewById(R.id.taboola_view);
 
 // Optional - set your content data parameters via code (instead of XML)
-taboola.setPublisher("<my-publisher>")
-        .setMode("<my-mode>")
+taboola.setPublisher("<publisher-as-supplied-by-taboola>")
+        .setMode("<mode-as-supplied-by-taboola>")
         .setPlacement("<my-placement>")
         .setPageUrl("http://www.example.com")
         .setPageType("<my-page-type>");
