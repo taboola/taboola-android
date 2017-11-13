@@ -337,7 +337,7 @@ Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.an
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
 ## 5. ProGuard
-You can find proguard rules for Taboola Widget in [this](app/proguard-taboola-widget.pro) file.
+You can find proguard rules for Taboola Widget in [proguard-taboola-widget.pro](app/proguard-taboola-widget.pro) file.
 The file contains instructions on which rules to comment/uncomment depending on which parts of the SDK you are using.
 
 ## 6. License
