@@ -22,16 +22,16 @@
 
 1. Add the library dependency to your project
  ```groovy
-     compile 'com.taboola:android-sdk:1.3.1'
+     compile 'com.taboola:android-sdk:1.3.+@aar'
 
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
-     compile 'com.android.support:customtabs:25.+'
+     compile 'com.android.support:customtabs:26.+'
 
      // include if you are using DFP mediation 
-     compile 'com.google.firebase:firebase-ads:10.+'
+     compile 'com.google.firebase:firebase-ads:11.+'
 
      // include if you are using MoPub mediation
-     compile('com.mopub:mopub-sdk-banner:4.+@aar') {
+     compile('com.mopub:mopub-sdk-banner:4.16.+@aar') {
          transitive = true
      }
  ```
