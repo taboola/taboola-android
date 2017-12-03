@@ -231,14 +231,15 @@ These steps are similar between all platforms, more detailed information can be 
 
 	```javascript
 	{
-		\"publisher\":\"<publisher code>\",
+		\"publisher\":\"<publisher id>\",
 		\"mode\":\"<mode>\",
 		\"url\":\"<url>\",
 		\"placement\":\"<placement>\",
-		\"article\":\"auto\",
+		\"<page-type>\":\"auto\",
 		\"referrer\":\"<ref url>"
 	}
 	```
+	**Notice:** ```<values>``` in the JSON should be replaced with the values provided by your Taboola account manager.
 
 	* **Configuring within the app code**: Use the following DFP method to send a NetworkExtrasBundle to the TaboolaSDK. The Bundle should contain key/value pairs with the required parameters.
 	
