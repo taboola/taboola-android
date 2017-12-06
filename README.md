@@ -101,9 +101,11 @@ taboola.setPublisher("<publisher-as-supplied-by-taboola>")
         .setMode("<mode-as-supplied-by-taboola>")
         .setPlacement("<placement-as-supplied-by-taboola>")
         .setPageUrl("<public-web-url-which-reflects-the-current-content>")
-        .setPageType("<my-page-type>");
+        .setPageType("<my-page-type>")
+        .setPageId("<my-page-URI>"); //default value is the relative path of the pageUrl provided.
+        
 
-// Optional. Set targetType only if it's specified by your Taboola account manager
+// Optional. Set this parameter only if instructed by your Taboola account manager.
 taboola.setTargetType("<my-target-type>");
 
 // fetch and display recommendations
