@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.6] - 2018-03-20
+### Changed
+- Add option to set text zoom on the widget (fixed text size)
+
 ## [1.3.1] - 2017-09-12
 ### Fixed
 - Internal bug fixes
