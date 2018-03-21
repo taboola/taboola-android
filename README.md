@@ -108,6 +108,9 @@ taboola.setPublisher("<publisher-as-supplied-by-taboola>")
 // Optional. Set this parameter only if instructed by your Taboola account manager.
 taboola.setTargetType("<my-target-type>");
 
+// Optional. Set text size in zoom.
+taboola.setTextZoom(<text-size>)
+
 // fetch and display recommendations
 taboola.fetchContent();
  ```
