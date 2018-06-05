@@ -64,8 +64,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.configurable_page:
                 fragmentToOpen = new ConfigFragment();
                 break;
+
+            case R.id.endless_feed_sample:
+                fragmentToOpen = new EndlessFeedFragment();
+                break;
             default:
-                return false;
+            return false;
         }
 
         transaction.replace(R.id.container_main, fragmentToOpen);

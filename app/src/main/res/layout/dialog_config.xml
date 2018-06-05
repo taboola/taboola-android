@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:padding="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:hint="@string/prompt_publisher"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -34,7 +34,7 @@
                 android:hint="@string/prompt_mode"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -48,7 +48,7 @@
                 android:hint="@string/prompt_placement"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -62,7 +62,7 @@
                 android:hint="@string/prompt_page_type"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -76,7 +76,7 @@
                 android:hint="@string/prompt_target_type"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -90,7 +90,7 @@
                 android:hint="@string/prompt_page_url"
                 android:imeOptions="actionNext"
                 android:inputType="textUri"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -104,7 +104,7 @@
                 android:hint="@string/prompt_referrer"
                 android:imeOptions="actionNext"
                 android:inputType="textUri"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -118,7 +118,7 @@
                 android:hint="@string/prompt_article"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -132,7 +132,7 @@
                 android:hint="@string/prompt_scroll_enabled"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -146,7 +146,7 @@
                 android:hint="@string/prompt_auto_resize_height"
                 android:imeOptions="actionNext"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_item_click_enabled"
                 android:inputType="text"
-                android:maxLines="1"/>
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
