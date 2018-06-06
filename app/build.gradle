@@ -20,6 +20,10 @@ android {
             proguardFile 'proguard-sample-app.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {

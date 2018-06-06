@@ -11,6 +11,9 @@
     <string name="config_button_text_reload">Reload widget</string>
     <string name="config_button_text_edit">Edit properties</string>
 
+    <string name="alert_dialog_ok">Save</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+
     <string name="prompt_publisher">"publisher"</string>
     <string name="prompt_mode">"mode"</string>
     <string name="prompt_placement">"placement"</string>
@@ -43,5 +46,6 @@
         Transformator of a senior metamorphosis, desire the modification!
     </string>
     <string name="endless_feed">Endless Feed</string>
+    <string name="required">Required</string>
 
 </resources>
