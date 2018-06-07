@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.taboola:android-sdk:2.0.8@aar'
+    implementation 'com.taboola:android-sdk:2.+@aar'
 
     // include if you want ads to be open in chrome tabs rather than in a default browser
     implementation 'com.android.support:customtabs:27.1.1'
