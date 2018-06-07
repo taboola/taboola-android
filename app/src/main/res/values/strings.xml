@@ -11,6 +11,9 @@
     <string name="config_button_text_reload">Reload widget</string>
     <string name="config_button_text_edit">Edit properties</string>
 
+    <string name="alert_dialog_ok">Save</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+
     <string name="prompt_publisher">"publisher"</string>
     <string name="prompt_mode">"mode"</string>
     <string name="prompt_placement">"placement"</string>
@@ -29,4 +32,20 @@
         \n\n Maecenas id urna id magna mattis luctus. Nullam augue lacus, blandit in fermentum ac, blandit nec neque. Cras ut arcu luctus, blandit nunc ut, bibendum nisl. Aliquam euismod non sem imperdiet viverra. Cras non nisi nisl. Ut aliquet nisi vitae lectus pharetra, non blandit lacus hendrerit. Mauris mattis finibus pharetra. Ut eleifend velit in tincidunt placerat. Mauris elementum tincidunt sem, eu tincidunt mauris condimentum non. Aliquam tempus ornare ipsum, vel efficitur ex hendrerit ac. Suspendisse pharetra iaculis enim, vestibulum bibendum diam. Nulla non ex tempor, consequat tortor in, molestie diam. Nulla ut eleifend libero, non efficitur justo. Duis ut consequat lacus, a interdum urna. Suspendisse vel iaculis orci. Nulla aliquet purus vitae tempor condimentum.
         \n\n Mauris et ornare odio, sed faucibus est. Donec feugiat magna non arcu ullamcorper fermentum. Ut et massa vel augue fringilla egestas vitae consequat dolor. Fusce molestie vehicula sollicitudin. Ut tempor elit eu sem laoreet, in consequat massa elementum. In sed sodales massa, ac dignissim enim. Pellentesque tortor augue, dignissim eget magna eu, sagittis ullamcorper leo. Donec vestibulum, orci id convallis posuere, lacus nunc tincidunt turpis, a luctus nibh mi nec ex. Duis ac mauris at lacus tincidunt porttitor vel sit amet ex. Morbi lacinia dui eget malesuada bibendum. Nulla id ultrices velit. Cras elementum magna orci, ac posuere mi fringilla vel.
         \n\n Proin vitae ipsum et odio sagittis convallis. Suspendisse bibendum malesuada nibh nec volutpat. Nullam in dignissim elit. Vivamus ut sapien velit. Aenean condimentum non nisi id dictum. Pellentesque ultrices egestas massa, at dapibus enim vehicula at. Proin elementum nibh eu lobortis ultrices. Nam mauris metus, dictum congue nisi a, finibus condimentum odio. Nam tempor mauris eu nibh eleifend, id vestibulum tellus lobortis. Aenean fermentum, enim quis commodo facilisis, metus dui facilisis sem, vel porta augue nisl non metus. Phasellus ac ultricies risus. Donec id nibh fringilla, ultricies neque vitae, dignissim metus.</string>
+
+    <string name="fake_text">
+        Est domesticus fluctui, cesaris.
+        Why does the fish sing?
+        Teleporters harvest with faith!
+        Never vandalize a lubber.
+        Avocado can be tossed with thin quinoa, also try mash uping the soup with condensed milk.
+        Punishment ho! crush to be raided.
+        All whales scrape mighty, swashbuckling lads.
+        The ferengi goes friendship like a dead phenomenan.
+        It is a cloudy understanding, sir.
+        Transformator of a senior metamorphosis, desire the modification!
+    </string>
+    <string name="endless_feed">Endless Feed</string>
+    <string name="required">Required</string>
+
 </resources>

@@ -1,20 +1,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:taboola="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.taboola.taboolasample.DynamicSampleFragment">
+    xmlns:taboola="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.taboola.taboolasample.DynamicSampleFragment">
 
     <LinearLayout
         android:id="@+id/ad_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/lorem_ipsum"/>
+            android:text="@string/lorem_ipsum" />
 
         <!-- Specify target_type only if it's specified by your Taboola account manager. -->
         <com.taboola.android.TaboolaWidget
@@ -23,9 +24,9 @@
             android:layout_height="match_parent"
             taboola:mode="thumbnails-sdk3"
             taboola:page_type="article"
-            taboola:url="http://example.com"
             taboola:placement="Mobile"
-            taboola:publisher="betterbytheminute-app"/>
+            taboola:publisher="betterbytheminute-app"
+            taboola:url="http://example.com" />
 
     </LinearLayout>
 

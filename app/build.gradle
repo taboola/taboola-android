@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.taboola.taboolasample"
         minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 27
+        versionCode 2
+        versionName "2.0"
+        dataBinding {
+            enabled = true
+        }
     }
     buildTypes {
         release {
@@ -19,26 +20,32 @@ android {
             proguardFile 'proguard-sample-app.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
-    compile 'com.taboola:android-sdk:1.+@aar'
+    implementation 'com.taboola:android-sdk:2.+@aar'
 
     // include if you want ads to be open in chrome tabs rather than in a default browser
-    compile 'com.android.support:customtabs:26.1.0'
+    implementation 'com.android.support:customtabs:27.1.1'
 
-    // include if you are using DFP mediation
-//    compile 'com.google.firebase:firebase-ads:11.6.0'
-
-    // include if you are using MoPub mediation
-//    compile('com.mopub:mopub-sdk-banner:4.16.1@aar') {
+//    // include if you are using DFP mediation
+//    implementation 'com.google.firebase:firebase-ads:11.6.0'
+//
+//    // include if you are using MoPub mediation
+//    implementation('com.mopub:mopub-sdk-banner:4.16.1@aar') {
 //        transitive = true
 //        exclude module: 'libAvid-mopub'
 //        exclude module: 'moat-mobile-app-kit'
 //    }
 
     // dependencies for sample app only
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${support_library}"
+    implementation "com.android.support:design:${support_library}"
+    implementation "com.android.support:support-v4:${support_library}"
+
 }

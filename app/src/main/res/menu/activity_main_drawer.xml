@@ -12,6 +12,10 @@
         <item
             android:id="@+id/configurable_page"
             android:title="@string/drawer_item_title_configurable_page"/>
+
+        <item
+            android:id="@+id/endless_feed_sample"
+            android:title="@string/endless_feed" />
     </group>
 
 </menu>
