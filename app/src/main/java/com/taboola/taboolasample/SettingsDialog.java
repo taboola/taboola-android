@@ -79,7 +79,7 @@ public class SettingsDialog extends DialogFragment {
         if (isRequired) {
             requiredFields.add(editText);
 
-            //assuming that all EditText warped by TextInputLayout
+            //assuming that all EditText wrapped by TextInputLayout
             final TextInputLayout textInputLayout = (TextInputLayout) editText.getParent().getParent();
             textInputLayout.setHint(textInputLayout.getHint() + "*");
             textInputLayout.setTypeface(ROBOTO_BOLD);
