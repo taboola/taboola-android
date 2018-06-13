@@ -16,7 +16,7 @@
 
 ### 1.1. Minimum requirements
 
-* Android version 2.1  (```android:minSdkVersion="9"```)
+* Android version 4.0  (```android:minSdkVersion="14"```)
 
 ### 1.2. Incorporating the SDK
 
