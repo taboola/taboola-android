@@ -37,7 +37,7 @@
      }
  ```
 > ## Notice
-> We encourgae developers to use the latest SDK version. In order to stay up-to-date we suggest subscribing to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
+> We encourage developers to use the latest SDK version. In order to stay up-to-date, we suggest to subscribe in order to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
 
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
@@ -54,8 +54,8 @@
 
 ### 1.3. Displaying Taboola recommendations widget
 
-To include Taboola recommendations in your app just add a `com.taboola.android.TaboolaWidget` to your UI.
-`TaboolaWidget` subclasses `ViewGroup` and behaves just like any other standard Android view.
+To include Taboola recommendations in your app just add `com.taboola.android.TaboolaWidget` to your UI.
+`TaboolaWidget` subclass `ViewGroup` behaves just like any other standard Android view.
 
 1. Include the XML block in your `Activity` or `Fragment` layout
 
@@ -82,7 +82,7 @@ import com.taboola.android.TaboolaWidget;
 private TaboolaWidget taboola;
  ```
 
-4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and have it fetch the display the recommendations
+4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and then fetch the display of recommendations
  ```java
 taboola = (TaboolaWidget) rootView.findViewById(R.id.taboolaView);
 taboola.fetchContent();
@@ -135,13 +135,13 @@ public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
 
 ##### 1.5.1. taboolaViewItemClickHandler
 
-This method will be called every time a user clicks a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
+This method will be called every time a user clicks on a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
 
 * Return **`false`** - abort the default behavior, the app should display the recommendation content on its own (for example, using an in-app browser). (Since 1.2.1 aborts only for organic items!)
 * Return **`true`** - this will allow the app to implement a click-through and continue to the default behaviour.
 
 `isOrganic` indicates whether the item clicked was an organic content recommendation or not.
-**Best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which shows that piece of content.**
+**The best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which will show that piece of content.**
 
 ##### 1.5.1.1. Example:
  ```java
@@ -198,7 +198,7 @@ LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotif
 ## 2. Example App
 This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio.
 
-In case you encounter some issues when integrating the SDK into your app, try recreating the scenario within the example app. This might help isolate the problem, and in case you weren't able to solve it, you'll be able to send the example app with your recreated issue to Taboola's support for more help.
+In case you encounter some issues while integrating the SDK into your app, try to recreate the scenario within the example app. This might help to isolate the problems, and in case you weren't able to solve it, you would be able to send the example app with your recreated issue to Taboola's support (for more help).
 
 
 ## 3. Mediation
@@ -369,5 +369,5 @@ Below you can find the way how to set the flag on Android SDK Standard we suppor
 ```
 
 ## 7. License
-This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
+This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree with the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
 Copyright 2017 Taboola, Inc.  All rights reserved.
