@@ -9,7 +9,8 @@
 3. [Mediation](#3-mediation)
 4. [SDK Reference](#4-sdk-reference)
 5. [Proguard](#5-proguard)
-6. [License](#6-license)
+6. [GDPR](#6-gdpr)
+7. [License](#7-license)
 
 
 ## 1. Getting Started
@@ -27,7 +28,7 @@
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      implementation 'com.android.support:customtabs:26.+'
 
-     // include if you are using DFP mediation 
+     // include if you are using DFP mediation
      implementation 'com.google.firebase:firebase-ads:11.+'
 
      // include if you are using MoPub mediation
@@ -50,7 +51,7 @@
     android:configChanges="orientation|screenSize|keyboardHidden">
  </activity>
  ```
- 
+
 ### 1.3. Displaying Taboola recommendations widget
 
 To include Taboola recommendations in your app just add a `com.taboola.android.TaboolaWidget` to your UI.
@@ -103,7 +104,7 @@ taboola.setPublisher("<publisher-as-supplied-by-taboola>")
         .setPageUrl("<public-web-url-which-reflects-the-current-content>")
         .setPageType("<my-page-type>")
         .setPageId("<my-page-URI>"); //default value is the relative path of the pageUrl provided.
-        
+
 
 // Optional. Set this parameter only if instructed by your Taboola account manager.
 taboola.setTargetType("<my-target-type>");
@@ -120,7 +121,7 @@ taboola.fetchContent();
 The default click behavior of TaboolaWidget is as follows:
 
 * On devices where Chrome custom tab is supported - open the recommendation in a chrome custom tab (in-app)
-* Otherwise - open the recommendation in the system default web browser (outside of the app) 
+* Otherwise - open the recommendation in the system default web browser (outside of the app)
 
 `TaboolaWidget` allows app developers to intercept recommendation clicks in order to create a click-through or to override the default way of opening the recommended article.
 
@@ -195,7 +196,7 @@ LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotif
  ```
 
 ## 2. Example App
-This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio. 
+This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio.
 
 In case you encounter some issues when integrating the SDK into your app, try recreating the scenario within the example app. This might help isolate the problem, and in case you weren't able to solve it, you'll be able to send the example app with your recreated issue to Taboola's support for more help.
 
@@ -211,7 +212,7 @@ Taboola Android SDK supports mediation via these platforms:
 * [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
 
 #### 3.2 Required Setup
-In order to configure mediation of Taboola SDK via a 3rd party platform, follow the steps listed below. 
+In order to configure mediation of Taboola SDK via a 3rd party platform, follow the steps listed below.
 
 1. Include the Taboola SDK in your app as explained under [1.2. Incorporating the SDK](#12-incorporating-the-sdk)
 
@@ -231,7 +232,7 @@ These steps are similar between all platforms, more detailed information can be 
 
 ##### 3.3.1 DFP & AdMob
 * **Class name**: com.taboola.android.mediation.DfpCustomEventBanner
-* **Parameters**: Parameters for the Taboola SDK can be configured either from the DFP web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
+* **Parameters**: Parameters for the Taboola SDK can be configured either from the DFP web interface or within the code (**settings from web interface take precedence over settings configured in code**).
 	* 	**Configuring from DFP web interface**: The "parameter" field in the DFP custom event configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***escaped double quotes***.
 
 	```javascript
@@ -247,14 +248,14 @@ These steps are similar between all platforms, more detailed information can be 
 	**Notice:** ```<values>``` in the JSON should be replaced with the values provided by your Taboola account manager.
 
 	* **Configuring within the app code**: Use the following DFP method to send a NetworkExtrasBundle to the TaboolaSDK. The Bundle should contain key/value pairs with the required parameters.
-	
+
 	```java
-	public AdRequest.Builder addNetworkExtrasBundle (Class<? extends MediationAdapter> adapterClass, Bundle networkExtras) 
+	public AdRequest.Builder addNetworkExtrasBundle (Class<? extends MediationAdapter> adapterClass, Bundle networkExtras)
 	```
 
 ##### 3.3.2 MoPub
 * **Class name**: com.taboola.android.mediation.MoPubCustomEventBanner
-* **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
+* **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**).
 	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom native network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
 
 	```
@@ -269,14 +270,14 @@ These steps are similar between all platforms, more detailed information can be 
 	```
 
 	* **Configuring within the app code**: Use the following MoPub method to send a map of LocalExtras to the TaboolaSDK. The Map should contain key/value pairs with the required parameters.
-	
+
 	```java
 	public void setLocalExtras(Map<String, Object> localExtras)
 	```
-	
 
 
-## 4. SDK Reference 
+
+## 4. SDK Reference
 ### 4.1. Public Properties
 ##### `String publisher`
 
@@ -346,6 +347,27 @@ Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.an
 You can find proguard rules for Taboola Widget in [proguard-taboola-widget.pro](app/proguard-taboola-widget.pro) file.
 The file contains instructions on which rules to comment/uncomment depending on which parts of the SDK you are using.
 
-## 6. License
+## 6. GDPR
+
+In order to support the The EU General Data Protection Regulation (GDPR - https://www.eugdpr.org/) in Taboola Mobile SDK, application developer should show a pop up asking the user's permission for storing their personal data in the App. In order to control the user's personal data (to store in the App or not) there exists a flag `User_opt_out`. It's mandatory to set this flag when using the Taboola SDK. The way to set this flag depends on the type of SDK you are using. By default we assume no permission from the user on a pop up, so the personal data will not be saved.
+
+### 6.1. How to set the flag in the SDK integration
+Below you can find the way how to set the flag on Android SDK Standard we support. It's recommended to put these lines alongside the other settings, such as publisher name, etc
+
+```javascript
+// Sample code
+   HashMap<String, String> optionalPageCommands = new HashMap<>();
+   TaboolaWidget taboola = new TaboolaWidget(getContext());
+   taboola.setPublisher("the-publisher-name")
+           .setMode("thumbnails-a")
+           .setPageType("home")
+           .setPageUrl("http://www.example.com/")
+           .setPlacement("Below Homepage Thumbnails");
+       optionalPageCommands.put("user_opt_out","true");
+       Taboola.setOptionalPageCommands(optionalPageCommands);
+
+```
+
+## 7. License
 This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
 Copyright 2017 Taboola, Inc.  All rights reserved.
