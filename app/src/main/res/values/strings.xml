@@ -47,5 +47,6 @@
     </string>
     <string name="endless_feed">Endless Feed</string>
     <string name="required">Required</string>
+    <string name="feed_inside_list">Feed inside list</string>
 
 </resources>

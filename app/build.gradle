@@ -47,5 +47,8 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${support_library}"
     implementation "com.android.support:design:${support_library}"
     implementation "com.android.support:support-v4:${support_library}"
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
 }
