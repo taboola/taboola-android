@@ -154,14 +154,55 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
     return true;
 }
  ```
+### 1.6. How to set TaboolaView height and scroll:
+#### 1. For Widget:
+Publisher set Fixed height:
+ * Set the TaboolaView frame (  The most important is the height)
+Use:
+```
+ taboolaView.setAutoResizeHeight(false);
+```
+##### For scroll inside the widget set:
+```
+taboolaView. setInterceptScroll (true);
+```
+### How to set Automatic height :
+ * The SDK will automatically decide the height, so you don’t need to give it.
+```
+`taboolaView.autoResizeHeight = YES; // This is the default, no need to add this code
+```
+##### For scroll inside the widget:
+```
+taboolaView.scrollEnable = NO; // This is the default, no need to add this code
+```
+#### 2. For Feed:
 
-### 1.6. Handling Taboola widget resize
+Our widget is a custom webview. The feed is endless and it has a scroll functionality. So when implementing feed, the view has a fixed size (height of the screen), usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
+The publisher should implement a callback called `ScrollToTopListener` and the interface will be called when the scroll should go back to the app.
+
+ Use:
+```
+taboolaView. setInterceptScroll (true)
+```
+* in ScrollView:
+```
+ taboolaView.setAutoResizeHeight(true); //This is the default, no need to add this code
+```
+* For scroll inside the widget
+```
+taboolaView. setScrollEnabled(false); //This is the default, no need to add this code)
+```
+* in recyclerview:
+Set the height of the widget size (and the row) to screen size
+
+
+### 1.7. Handling Taboola widget resize
 
 `TaboolaWidget` may resize its height after loading recommendations, to make sure that the full content is displayed (based on the actual widget `mode` loaded).
 
 After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the `TaboolaEventListener`, to allow the host app to adjust its layout to the changes. (This behavior may be disabled by setting the property `autoResizeHeight` to `false`.)
 
-### 1.7. Catching global notifications (broadcasts) from TaboolaWidget
+### 1.8. Catching global notifications (broadcasts) from TaboolaWidget
 
 `TaboolaWidget` fires app level broadcasts to notify registered objects within the app about certain event. Catching those events might be useful for implementing custom event mediation adapters for ad platforms not natively supported by Taboola Android SDK.
 
