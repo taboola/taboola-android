@@ -7,10 +7,9 @@
 1. [Getting Started](#1-getting-started)
 2. [Example App](#2-example-app)
 3. [SDK Reference](#3-sdk-reference)
-4. [Feed](#4-feed)
-5. [GDPR](#5-gdpr)
-6. [Proguard](#6-proguard)
-7. [License](#7-license)
+4. [GDPR](#4-gdpr)
+5. [Proguard](#5-proguard)
+6. [License](#6-license)
 
 
 ## 1. Getting Started
@@ -155,25 +154,73 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
 }
  ```
 ### 1.6. How to set TaboolaView height and scroll:
-#### For Widget:
-Publisher set Fixed height:
- * Set the TaboolaView frame (  The most important is the height)
-Use:
+#### 1.6.1 For widget:
+* Choose between fixed or automatic height
+
+#### Automatic height resize
+By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
+The SDK will automatically decide the height, so you don’t need to give it.
+
+```
+ taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
+```
+
+```
+//Disable scroll inside the widget
+taboolaView. setInterceptScroll(false); // This is the default, no need to add this code
+```
+
+#### Fixed height:
+
+ * Set the TaboolaView frame(The most important is the height)
 ```
  taboolaView.setAutoResizeHeight(false);
 ```
-##### For scroll inside the widget set:
+
 ```
-taboolaView. setInterceptScroll (true);
+//Enable scroll inside the widget
+taboolaView. setInterceptScroll(true);
 ```
-### How to set Automatic height :
- * The SDK will automatically decide the height, so you don’t need to give it.
+
+#### 1.6.2 For Feed:
+Our widget is a custom webview. The feed is endless and it has a scroll functionality. There are 2 options to handle feed:
+1) Automatic (less code and work for the publisher);
+2) Fixed (if the publisher has code that conflicts with ours, they will know how to implement it).
+
+So when implementing feed, the view has a fixed size, usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
+
 ```
-`taboolaView.autoResizeHeight = YES; // This is the default, no need to add this code
+// To enable scroll switch between the scrollView and taboolaView
+taboolaView. setInterceptScroll(true);
 ```
-##### For scroll inside the widget:
+#### Automatic height
+By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
+
 ```
-taboolaView.scrollEnable = NO; // This is the default, no need to add this code
+//To get the automatic height
+taboolaView.widgetHeight;
+```
+In collectionView or tabolaView, set your cell height with ```taboolaView.widgetHeight;```
+
+```
+taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
+```
+
+```
+//Disable scroll inside the widget
+taboolaView. setScrollEnabled(false); //This is the default, no need to add this code
+```
+####  Fixed height:
+
+* Set the TaboolaView frame (The most important is the height).
+* In CollectionView or tableView, set the cell height the same to tabolaView.
+
+```
+taboolaView.setAutoResizeHeight(false);
+```
+```
+//Enable scroll inside the widget
+taboolaView. setScrollEnabled(true);
 ```
 
 ### 1.7. Handling Taboola widget resize
@@ -294,31 +341,11 @@ Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.an
 ##### `setInterceptScroll`
 Set whether the widget should handle the scroll automatically (see the feed section).
 
-## 4. Feed
-
-   Our widget is a custom webview. The feed is endless and it has a scroll functionality. So when implementing feed, the view has a fixed size (height of the screen), usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
-   The publisher should implement a callback called `ScrollToTopListener` and the interface will be called when the scroll should go back to the app.
-
-    Use:
-   ```
-   taboolaView. setInterceptScroll (true)
-   ```
-   * in ScrollView:
-   ```
-    taboolaView.setAutoResizeHeight(true); //This is the default, no need to add this code
-   ```
-   * For scroll inside the widget
-   ```
-   taboolaView. setScrollEnabled(false); //This is the default, no need to add this code)
-   ```
-   * in recyclerview:
-   Set the height of the widget size (and the row) to screen size
-
-## 5. GDPR
+## 4. GDPR
 
 In order to support the The EU General Data Protection Regulation (GDPR - https://www.eugdpr.org/) in Taboola Mobile SDK, application developer should show a pop up asking the user's permission for storing their personal data in the App. In order to control the user's personal data (to store in the App or not) there exists a flag `User_opt_out`. It's mandatory to set this flag when using the Taboola SDK. The way to set this flag depends on the type of SDK you are using. By default we assume no permission from the user on a pop up, so the personal data will not be saved.
 
-### 5.1. How to set the flag in the SDK integration
+### 4.1. How to set the flag in the SDK integration
 Below you can find the way how to set the flag on Android SDK Standard we support. It's recommended to put these lines alongside the other settings, such as publisher name, etc
 
 ```javascript
@@ -335,10 +362,10 @@ Below you can find the way how to set the flag on Android SDK Standard we suppor
 
 ```
 
-## 6. ProGuard
+## 5. ProGuard
 You can find proguard rules for Taboola Widget in [proguard-taboola-widget.pro](app/proguard-taboola-widget.pro) file.
 The file contains instructions on which rules to comment/uncomment depending on which parts of the SDK you are using.
 
-## 7. License
+## 6. License
 This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree with the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
 Copyright 2017 Taboola, Inc.  All rights reserved.
