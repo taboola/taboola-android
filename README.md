@@ -5,8 +5,8 @@
 ## Table Of Contents
 1. [Getting Started](#1-getting-started)
 2. [Example App](#2-example-app)
-3. [Mediation](#3-mediation)
-4. [SDK Reference](#4-sdk-reference)
+3. [SDK Reference](#3-sdk-reference)
+4. [GDPR](#4-gdpr)
 5. [Proguard](#5-proguard)
 6. [License](#6-license)
 
@@ -26,7 +26,7 @@
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      implementation 'com.android.support:customtabs:26.+'
 
-     // include if you are using DFP mediation 
+     // include if you are using DFP mediation
      implementation 'com.google.firebase:firebase-ads:11.+'
 
      // include if you are using MoPub mediation
@@ -35,7 +35,7 @@
      }
  ```
 > ## Notice
-> We encourgae developers to use the latest SDK version. In order to stay up-to-date we suggest subscribing to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
+> We encourage developers to use the latest SDK version. In order to stay up-to-date, we suggest to subscribe in order to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
 
 
 2. Include this line in your app’s AndroidManifest.xml to allow Internet access
@@ -49,11 +49,11 @@
     android:configChanges="orientation|screenSize|keyboardHidden">
  </activity>
  ```
- 
+
 ### 1.3. Displaying Taboola recommendations widget
 
-To include Taboola recommendations in your app just add a `com.taboola.android.TaboolaWidget` to your UI.
-`TaboolaWidget` subclasses `ViewGroup` and behaves just like any other standard Android view.
+To include Taboola recommendations in your app just add `com.taboola.android.TaboolaWidget` to your UI.
+`TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
 
 1. Include the XML block in your `Activity` or `Fragment` layout
 
@@ -80,7 +80,7 @@ import com.taboola.android.TaboolaWidget;
 private TaboolaWidget taboola;
  ```
 
-4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and have it fetch the display the recommendations
+4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and then fetch the display of recommendations
  ```java
 taboola = (TaboolaWidget) rootView.findViewById(R.id.taboolaView);
 taboola.fetchContent();
@@ -102,7 +102,7 @@ taboola.setPublisher("<publisher-as-supplied-by-taboola>")
         .setPageUrl("<public-web-url-which-reflects-the-current-content>")
         .setPageType("<my-page-type>")
         .setPageId("<my-page-URI>"); //default value is the relative path of the pageUrl provided.
-        
+
 
 // Optional. Set this parameter only if instructed by your Taboola account manager.
 taboola.setTargetType("<my-target-type>");
@@ -119,7 +119,7 @@ taboola.fetchContent();
 The default click behavior of TaboolaWidget is as follows:
 
 * On devices where Chrome custom tab is supported - open the recommendation in a chrome custom tab (in-app)
-* Otherwise - open the recommendation in the system default web browser (outside of the app) 
+* Otherwise - open the recommendation in the system default web browser (outside of the app)
 
 `TaboolaWidget` allows app developers to intercept recommendation clicks in order to create a click-through or to override the default way of opening the recommended article.
 
@@ -133,13 +133,13 @@ public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
 
 ##### 1.5.1. taboolaViewItemClickHandler
 
-This method will be called every time a user clicks a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
+This method will be called every time a user clicks on a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
 
 * Return **`false`** - abort the default behavior, the app should display the recommendation content on its own (for example, using an in-app browser). (Since 1.2.1 aborts only for organic items!)
 * Return **`true`** - this will allow the app to implement a click-through and continue to the default behaviour.
 
 `isOrganic` indicates whether the item clicked was an organic content recommendation or not.
-**Best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which shows that piece of content.**
+**The best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which will show that piece of content.**
 
 ##### 1.5.1.1. Example:
  ```java
@@ -152,14 +152,79 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
     return true;
 }
  ```
+### 1.6. How to set TaboolaView height and scroll:
+#### 1.6.1 For widget:
+* Choose between fixed or automatic height
 
-### 1.6. Handling Taboola widget resize
+#### Automatic height resize
+By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
+The SDK will automatically decide the height, so you don’t need to give it.
+
+```
+ taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
+```
+
+```
+//Disable scroll inside the widget
+taboolaView. setInterceptScroll(false); // This is the default, no need to add this code
+```
+
+#### Fixed height:
+
+ * Set the TaboolaView frame(The most important is the height)
+```
+ taboolaView.setAutoResizeHeight(false);
+```
+
+```
+//Enable scroll inside the widget
+taboolaView. setInterceptScroll(true);
+```
+
+#### 1.6.2 For Feed:
+Our widget is a custom webview. The feed is endless and it has a scroll functionality.When implementing feed, the view has a fixed size, usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
+
+```
+// To enable scroll switch between the scrollView and taboolaView
+taboolaView. setInterceptScroll(true);
+```
+#### Automatic height
+By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
+
+```
+//To get the automatic height
+taboolaView.widgetHeight;
+```
+In collectionView or tabolaView, set your cell height with ```taboolaView.widgetHeight;```
+
+```
+taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
+```
+
+```
+//Disable scroll inside the widget
+taboolaView. setScrollEnabled(false); //This is the default, no need to add this code
+```
+####  Fixed height:
+
+* Set the TaboolaView frame (The most important is the height).
+* In CollectionView or tableView, set the cell height the same to tabolaView.
+
+```
+taboolaView.setAutoResizeHeight(false);
+```
+```
+//Enable scroll inside the widget
+taboolaView. setScrollEnabled(true);
+```
+
+### 1.7. Handling Taboola widget resize
 
 `TaboolaWidget` may resize its height after loading recommendations, to make sure that the full content is displayed (based on the actual widget `mode` loaded).
 
 After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the `TaboolaEventListener`, to allow the host app to adjust its layout to the changes. (This behavior may be disabled by setting the property `autoResizeHeight` to `false`.)
 
-### 1.7. Catching global notifications (broadcasts) from TaboolaWidget
+### 1.8. Catching global notifications (broadcasts) from TaboolaWidget
 
 `TaboolaWidget` fires app level broadcasts to notify registered objects within the app about certain event. Catching those events might be useful for implementing custom event mediation adapters for ad platforms not natively supported by Taboola Android SDK.
 
@@ -194,89 +259,12 @@ LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotif
  ```
 
 ## 2. Example App
-This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio. 
+This repository includes an example Android app which uses the Taboola SDK. To use it, just clone this repository and open the project wih Android Studio.
 
-In case you encounter some issues when integrating the SDK into your app, try recreating the scenario within the example app. This might help isolate the problem, and in case you weren't able to solve it, you'll be able to send the example app with your recreated issue to Taboola's support for more help.
+In case you encounter some issues while integrating the SDK into your app, try to recreate the scenario within the example app. This might help to isolate the problems, and in case you weren't able to solve it, you would be able to send the example app with your recreated issue to Taboola's support (for more help).
 
-
-## 3. Mediation
-
-#### 3.1. Supported Ad Platforms
-
-Taboola Android SDK supports mediation via these platforms:
-
-* [DFP](https://developers.google.com/mobile-ads-sdk/docs/dfp/android/custom-events)
-* [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
-* [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
-
-#### 3.2 Required Setup
-In order to configure mediation of Taboola SDK via a 3rd party platform, follow the steps listed below. 
-
-1. Include the Taboola SDK in your app as explained under [1.2. Incorporating the SDK](#12-incorporating-the-sdk)
-
-2. In the required platform web management interface, create a new "custom event" network named "Taboola", and fill the parameters as described [below](#33-parameters-for-custom-events-configuration).
-
-3. Target impressions from the newly created Taboola network into the required ad-units within your app.
-
-In this way, the platform would automatically use the Taboola SDK when an impression from Taboola should be displayed.
-
-These steps are similar between all platforms, more detailed information can be found in these links for the specific platforms:
-
-* [DFP](https://developers.google.com/mobile-ads-sdk/docs/dfp/android/custom-events)
-* [AdMob](https://firebase.google.com/docs/admob/android/custom-events)
-* [MoPub](http://www.mopub.com/resources/docs/mopub-ui-account-setup/ad-network-set-up/)
-
-#### 3.3 Parameters for Custom Events configuration
-
-##### 3.3.1 DFP & AdMob
-* **Class name**: com.taboola.android.mediation.DfpCustomEventBanner
-* **Parameters**: Parameters for the Taboola SDK can be configured either from the DFP web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
-	* 	**Configuring from DFP web interface**: The "parameter" field in the DFP custom event configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***escaped double quotes***.
-
-	```javascript
-	{
-		\"publisher\":\"<publisher id>\",
-		\"mode\":\"<mode>\",
-		\"url\":\"<url>\",
-		\"placement\":\"<placement>\",
-		\"<page-type>\":\"auto\",
-		\"referrer\":\"<ref url>"
-	}
-	```
-	**Notice:** ```<values>``` in the JSON should be replaced with the values provided by your Taboola account manager.
-
-	* **Configuring within the app code**: Use the following DFP method to send a NetworkExtrasBundle to the TaboolaSDK. The Bundle should contain key/value pairs with the required parameters.
-	
-	```java
-	public AdRequest.Builder addNetworkExtrasBundle (Class<? extends MediationAdapter> adapterClass, Bundle networkExtras) 
-	```
-
-##### 3.3.2 MoPub
-* **Class name**: com.taboola.android.mediation.MoPubCustomEventBanner
-* **Parameters**: Parameters for the Taboola SDK can be configured either from the MoPub web interface or within the code (**settings from web interface take precedence over settings configured in code**). 
-	* 	**Configuring from MoPub web interface**: The "Custom Class Data" field in the MoPub custom native network configuration screen, should contain a JSON string with the required properties. Notice that strings should be enclosed within ***double quotes***.
-
-	```
-	{
-  		"publisher": "publisher",
-  		"mode": "mode",
-  		"url": "http://www.example.com",
-  		"article": "auto",
-  		"page_type" : "page_type",
-  		"referrer": "http://www.example.com/ref"
-	}
-	```
-
-	* **Configuring within the app code**: Use the following MoPub method to send a map of LocalExtras to the TaboolaSDK. The Map should contain key/value pairs with the required parameters.
-	
-	```java
-	public void setLocalExtras(Map<String, Object> localExtras)
-	```
-	
-
-
-## 4. SDK Reference 
-### 4.1. Public Properties
+## 3. SDK Reference
+### 3.1. Public Properties
 ##### `String publisher`
 
 Mandatory. Sets the `publisher`  (can also be set via XML as `publisher`)
@@ -320,7 +308,11 @@ Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScrip
 ##### `HashMap<String, String> optionalModeCommands`
 Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
-### 4.2. Public methods
+##### `ScrollToTopListener`
+Optional. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
+
+
+### 3.2. Public methods
 
 ##### `public void fetchContent()`
 
@@ -341,10 +333,34 @@ Set level of log output of the widget. (default level is `ERROR`)
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
+##### `setInterceptScroll`
+Set whether the widget should handle the scroll automatically (see the feed section).
+
+## 4. GDPR
+
+In order to support the The EU General Data Protection Regulation (GDPR - https://www.eugdpr.org/) in Taboola Mobile SDK, application developer should show a pop up asking the user's permission for storing their personal data in the App. In order to control the user's personal data (to store in the App or not) there exists a flag `User_opt_out`. It's mandatory to set this flag when using the Taboola SDK. The way to set this flag depends on the type of SDK you are using. By default we assume no permission from the user on a pop up, so the personal data will not be saved.
+
+### 4.1. How to set the flag in the SDK integration
+Below you can find the way how to set the flag on Android SDK Standard we support. It's recommended to put these lines alongside the other settings, such as publisher name, etc
+
+```javascript
+// Sample code
+   HashMap<String, String> optionalPageCommands = new HashMap<>();
+   TaboolaWidget taboola = new TaboolaWidget(getContext());
+   taboola.setPublisher("the-publisher-name")
+           .setMode("thumbnails-a")
+           .setPageType("home")
+           .setPageUrl("http://www.example.com/")
+           .setPlacement("Below Homepage Thumbnails");
+       optionalPageCommands.put("user_opt_out","true");
+       Taboola.setOptionalPageCommands(optionalPageCommands);
+
+```
+
 ## 5. ProGuard
 You can find proguard rules for Taboola Widget in [proguard-taboola-widget.pro](app/proguard-taboola-widget.pro) file.
 The file contains instructions on which rules to comment/uncomment depending on which parts of the SDK you are using.
 
 ## 6. License
-This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree to the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
+This program is licensed under the Taboola, Inc. SDK License Agreement (the “License Agreement”).  By copying, using or redistributing this program, you agree with the terms of the License Agreement.  The full text of the license agreement can be found at https://github.com/taboola/taboola-android/blob/master/LICENSE.
 Copyright 2017 Taboola, Inc.  All rights reserved.
