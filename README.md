@@ -21,7 +21,7 @@
 
 1. Add the library dependency to your project
  ```groovy
-     implementation 'com.taboola:android-sdk:2.0.21@aar'
+     implementation 'com.taboola:android-sdk:2.0.22@aar'
 
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      implementation 'com.android.support:customtabs:26.+'
@@ -230,10 +230,10 @@ After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the
 
 These are the types of broadcasts sent by TaboolaWidget:
 
-* `GlobalNotificationReceiver.TABOOLA_DID_RECEIVEAD​`
+* `GlobalNotificationReceiver.TABOOLA_DID_RECEIVE_AD​`
 * `GlobalNotificationReceiver.TABOOLA_VIEW_RESIZED`
 * `GlobalNotificationReceiver.TABOOLA_ITEM_DID_CLICK`
-* `GlobalNotificationReceiver.TABOOLA_DID_FAILAD`
+* `GlobalNotificationReceiver.TABOOLA_DID_FAIL_AD`
 
 In order to catch those notifications, you can use the class `com.taboola.android.globalNotifications.GlobalNotificationReceiver`
 
