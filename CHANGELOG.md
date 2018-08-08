@@ -1,5 +1,12 @@
 # Change Log
 
+
+## [2.0.23] - 2018-08-08
+### Fixed
+- Fix memory leaks in sdk api
+- Added BI layer(internal)
+- Protect resize in sdk standard from crash. Add callback for image loading failure
+
 ## [1.3.6] - 2018-03-20
 ### Changed
 - Add option to set text zoom on the widget (fixed text size)
