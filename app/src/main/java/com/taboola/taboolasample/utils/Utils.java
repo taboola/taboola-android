@@ -1,10 +1,11 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.TypedValue;
 
 import com.taboola.android.utils.SdkDetailsHelper;
+import com.taboola.taboolasample.R;
 
 public class Utils {
     public static int getActionBarHeight(Context context) {

@@ -18,8 +18,12 @@
             android:title="@string/endless_feed" />
 
         <item
-            android:id="@+id/endless_feed_with_list"
-            android:title="@string/feed_inside_list" />
+            android:id="@+id/rv_sample"
+            android:title="@string/rv_sample" />
+
+        <item
+            android:id="@+id/lv_sample"
+            android:title="@string/lv_sample" />
     </group>
 
 </menu>

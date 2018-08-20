@@ -47,6 +47,8 @@
     </string>
     <string name="endless_feed">Endless Feed</string>
     <string name="required">Required</string>
-    <string name="feed_inside_list">Feed inside list</string>
+    <string name="rv_sample">RecyclerViewSample</string>
+    <string name="lv_sample">ListViewSample</string>
+    <string name="lv_screen_name">ListViewSampleFragment</string>
 
 </resources>

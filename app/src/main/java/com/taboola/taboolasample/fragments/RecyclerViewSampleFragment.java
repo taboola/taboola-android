@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,14 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class EndlessFeedWithListFragment extends Fragment {
+import com.taboola.taboolasample.R;
+import com.taboola.taboolasample.adapters.RecyclerViewAdapter;
 
-    private FeedAdapter mAdapter;
+public class RecyclerViewSampleFragment extends Fragment {
+
+    private RecyclerViewAdapter mAdapter;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mAdapter = new FeedAdapter();
+        mAdapter = new RecyclerViewAdapter();
     }
 
     @Override

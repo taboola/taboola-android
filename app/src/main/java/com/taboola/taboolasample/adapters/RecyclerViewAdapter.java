@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,15 +12,16 @@ import android.widget.TextView;
 
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.utils.SdkDetailsHelper;
+import com.taboola.taboolasample.R;
 
 import java.util.List;
 
-public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private final List<ListItems.FeedListItem> mData;
 
-    public FeedAdapter() {
+    public RecyclerViewAdapter() {
         mData = ListItems.getGeneratedData();
     }
 
@@ -30,11 +31,11 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         taboolaWidget.setLayoutParams(params);
         taboolaWidget
                 .setPageType("article")
-                .setPageUrl("www.eonline.com")
-                .setMode("thumbnails-a")
-                .setPlacement("App Below Article Thumbnails")
+                .setPageUrl("http://www.example.com")
+                .setMode("thumbnails-feed")
+                .setPlacement("feed-sample-app")
                 .setTargetType("mix")
-                .setPublisher("eonline-androidapp");
+                .setPublisher("betterbytheminute-app");
 
         taboolaWidget.setInterceptScroll(true);
         taboolaWidget.fetchContent();

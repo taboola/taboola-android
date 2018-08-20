@@ -11,6 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.taboola.taboolasample.fragments.ConfigFragment;
+import com.taboola.taboolasample.fragments.DynamicSampleFragment;
+import com.taboola.taboolasample.fragments.EndlessFeedSampleFragment;
+import com.taboola.taboolasample.fragments.ListViewSampleFragment;
+import com.taboola.taboolasample.fragments.RecyclerViewSampleFragment;
+import com.taboola.taboolasample.fragments.XmlSampleFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -18,13 +25,13 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -37,7 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -66,12 +73,17 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.endless_feed_sample:
-                fragmentToOpen = new EndlessFeedFragment();
+                fragmentToOpen = new EndlessFeedSampleFragment();
                 break;
 
-            case R.id.endless_feed_with_list:
-                fragmentToOpen = new EndlessFeedWithListFragment();
+            case R.id.rv_sample:
+                fragmentToOpen = new RecyclerViewSampleFragment();
                 break;
+
+            case R.id.lv_sample:
+                fragmentToOpen = new ListViewSampleFragment();
+                break;
+
             default:
                 return false;
         }
@@ -79,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         transaction.replace(R.id.container_main, fragmentToOpen);
         transaction.commit();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

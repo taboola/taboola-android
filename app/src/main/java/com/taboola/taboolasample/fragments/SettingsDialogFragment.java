@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.fragments;
 
 import android.app.Dialog;
 import android.databinding.BindingAdapter;
@@ -15,14 +15,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.taboola.taboolasample.data.Properties;
+import com.taboola.taboolasample.R;
 import com.taboola.taboolasample.databinding.DialogConfigBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsDialog extends DialogFragment {
+public class SettingsDialogFragment extends DialogFragment {
 
-    private static final String TAG = "SettingsDialog";
+    private static final String TAG = "SettingsDialogFragment";
     private static final String ARG_PROPERTIES = TAG + "ARG_PROPERTIES";
 
 
@@ -35,7 +37,7 @@ public class SettingsDialog extends DialogFragment {
 
 
     static void showSettingsDialog(FragmentManager fragmentManager, Properties properties, SettingsCallback callback) {
-        SettingsDialog propertiesDialogFragment = new SettingsDialog();
+        SettingsDialogFragment propertiesDialogFragment = new SettingsDialogFragment();
         propertiesDialogFragment.mCallback = callback;
 
         Bundle args = new Bundle();

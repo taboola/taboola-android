@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,11 +12,13 @@ import android.widget.Button;
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.utils.Const;
 import com.taboola.android.utils.Logger;
+import com.taboola.taboolasample.data.Properties;
+import com.taboola.taboolasample.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConfigFragment extends Fragment implements SettingsDialog.SettingsCallback {
+public class ConfigFragment extends Fragment implements SettingsDialogFragment.SettingsCallback {
     private TaboolaWidget mTaboolaWidget;
     private Map<String, String> mWidgetProperties = new HashMap<>();
     private Properties mProperties = new Properties();
@@ -82,6 +84,6 @@ public class ConfigFragment extends Fragment implements SettingsDialog.SettingsC
     }
 
     private void showSettingsDialog() {
-        SettingsDialog.showSettingsDialog(getFragmentManager(), mProperties, this);
+        SettingsDialogFragment.showSettingsDialog(getFragmentManager(), mProperties, this);
     }
 }

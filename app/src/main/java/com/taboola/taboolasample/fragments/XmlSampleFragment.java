@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.fragments;
 
 
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.listeners.TaboolaEventListener;
+import com.taboola.taboolasample.R;
 
 
 public class XmlSampleFragment extends Fragment {

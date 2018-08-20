@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.IntDef;
@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 public class ListItems {
 
-    abstract static class FeedListItem {
+    public abstract static class FeedListItem {
 
         @Retention(SOURCE)
         @IntDef({ItemType.TABOOLA_ITEM, ItemType.RANDOM_ITEM,})
@@ -31,14 +31,14 @@ public class ListItems {
         }
     }
 
-    static class TaboolaView extends FeedListItem {
+    public static class TaboolaView extends FeedListItem {
 
         TaboolaView() {
             super(ItemType.TABOOLA_ITEM);
         }
     }
 
-    static class RandomItem extends FeedListItem {
+    public static class RandomItem extends FeedListItem {
 
         final int color;
         final String randomText;
