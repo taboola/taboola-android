@@ -88,7 +88,7 @@ private TaboolaWidget taboola;
 
 4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and then fetch the display of recommendations
  ```java
-taboola = (TaboolaWidget) rootView.findViewById(R.id.taboolaView);
+taboola = (TaboolaWidget) findViewById(R.id.taboolaView);
 taboola.fetchContent();
  ```
 
