@@ -15,14 +15,14 @@
 
 ### 1.1. Minimum requirements
 
-* Android version 4.0  (```android:minSdkVersion="14"```)
+* Android version 4.0  (```android:minSdkVersion="24"```)
 
 ### 1.2. Incorporating the SDK
 
 1. Add the library dependency to your project
 implement latest version
  ```groovy
-     implementation 'com.taboola:android-sdk:2.0.23@aar'
+     implementation 'com.taboola:android-sdk:2.0.24@aar'
 
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      implementation 'com.android.support:customtabs:26.+'
@@ -56,13 +56,14 @@ implement latest version
 To include Taboola recommendations in your app just add `com.taboola.android.TaboolaWidget` to your UI.
 `TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
 
-1. Include the XML block in your `Activity` or `Fragment` layout
+1.a Include the XML block in your `Activity` or `Fragment` layout
 
  ```xml
  <!-- Specify target_type only if it's specified by your Taboola account manager. -->
  <com.taboola.android.TaboolaWidget
     android:id="@+id/taboola_view"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"                                    
     taboola:publisher="<publisher-as-supplied-by-taboola>"
     taboola:mode="<mode-as-supplied-by-taboola>"
     taboola:placement="<placement-as-supplied-by-taboola>"
@@ -70,6 +71,10 @@ To include Taboola recommendations in your app just add `com.taboola.android.Tab
     taboola:page_type="<my-page-type>"
     taboola:target_type="<my-target-type>"
     />
+ ```
+ 1.b Include the XML decleration for taboola
+ ```XML decleration
+ xmlns:taboola="http://schemas.android.com/apk/res-auto"
  ```
 2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `url`, `page_type`, `target_type`)
 
