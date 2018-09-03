@@ -50,8 +50,11 @@ implement latest version
     android:configChanges="orientation|screenSize|keyboardHidden">
  </activity>
  ```
+## 1.3 Displaying Taboola recommendations widget 
 
-### 1.3. Displaying Taboola recommendations widget
+The following will describe both xml and code examples for Taboola recommendations widget properties usage.
+
+### 1.3.1 Displaying Taboola recommendations widget properties in xml
 
 To include Taboola recommendations in your app just add `com.taboola.android.TaboolaWidget` to your UI.
 `TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
@@ -83,26 +86,25 @@ To include Taboola recommendations in your app just add `com.taboola.android.Tab
  ```java
 import com.taboola.android.TaboolaWidget;
 //...
-private TaboolaWidget taboola;
+private TaboolaWidget taboolaWidget;
  ```
 
 4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and then fetch the display of recommendations
  ```java
-taboola = (TaboolaWidget) findViewById(R.id.taboolaView);
-taboola.fetchContent();
+taboolaWidget = (TaboolaWidget) findViewById(R.id.taboola_view);
+taboolaWidget.fetchContent();
  ```
 
 5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
-### 1.4. Setting the TaboolaWidget properties in code
+### 1.3.2 Setting the TaboolaWidget properties in code(Alternative)
 
 Optionally, you can set the TaboolaWidget attributes directly in code, rather than have them set in XML
 
  ```java
-TaboolaWidget taboola = (TaboolaWidget) findViewById(R.id.taboola_view);
 
 // Optional - set your content data parameters via code (instead of XML)
-taboola.setPublisher("<publisher-as-supplied-by-taboola>")
+taboolaWidget.setPublisher("<publisher-as-supplied-by-taboola>")
         .setMode("<mode-as-supplied-by-taboola>")
         .setPlacement("<placement-as-supplied-by-taboola>")
         .setPageUrl("<public-web-url-which-reflects-the-current-content>")
@@ -111,13 +113,12 @@ taboola.setPublisher("<publisher-as-supplied-by-taboola>")
 
 
 // Optional. Set this parameter only if instructed by your Taboola account manager.
-taboola.setTargetType("<my-target-type>");
+taboolaWidget.setTargetType("<my-target-type>");
 
 // Optional. Set text size in zoom.
-taboola.setTextZoom(<text-size>)
+taboolaWidget.setTextZoom(<text-size>)
 
-// fetch and display recommendations
-taboola.fetchContent();
+// fetch and display recommendations if not already fetched, taboolaWidget.fetchContent();
  ```
 
 ### 1.5. Intercepting recommendation clicks
