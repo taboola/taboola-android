@@ -1,5 +1,13 @@
 # Change Log
 
+## [2.0.25] - 2018-09-04
+### Fixed
+- Prevent crash in case where not delivering WebView attached to window
+- Added logs for null context state
+- Added support for notify-clientEvent
+- Height & Width added to SDK-API
+- Added support for a single item image size in placement
+
 
 ## [2.0.23] - 2018-08-08
 ### Fixed
