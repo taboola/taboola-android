@@ -12,6 +12,7 @@
 
 
 ## 1. Getting Started
+##### This step describes two **alternative** integration flows to setup and show TaboolaWidget: XML and Java code.
 
 ### 1.1. Minimum requirements
 
@@ -50,14 +51,11 @@ implement latest version
     android:configChanges="orientation|screenSize|keyboardHidden">
  </activity>
  ```
-## 1.3 Displaying Taboola recommendations widget 
-
-The following step describes two **alternative** integration flows: XML and Java code. These are examples for Taboola recommendations widget properties usage.
+## 1.3 Displaying TaboolaWidget
 **Note:** In general, Taboola recommends not to use "match_parent" as the TaboolaWidget height. In the following examples you will see the height is set to 600dp. As other choices in this sample integration, that's an arbitrary value. Feel free to set it to whichever reasonable height you reqiure. 
 **Note:** `TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
 
-### 1.3.1 Displaying Taboola Widget
-#### 1.3.1.1 XML Integration
+### 1.3.1 XML Integration
 In your `Activity` or `Fragment` layout xml file:
 1. Include the XML decleration for taboola
      ```XML decleration
@@ -73,9 +71,8 @@ In your `Activity` or `Fragment` layout xml file:
         ...
         />
      ```
- 3.
+ 3. Configure TaboolaWidget's properties (Contact Taboola if you don't already have your parameter values)
       ```xml
-     <!-- Specify target_type only if it's specified by your Taboola account manager. -->
      <com.taboola.android.TaboolaWidget
         ...
         taboola:publisher="<publisher-as-supplied-by-taboola>"
@@ -107,7 +104,7 @@ In your `Activity` or `Fragment` code:
      ```
 5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
-#### 1.3.1.2 Java Integration
+### 1.3.2 Java Integration
 In your `Activity` or `Fragment` code:
 1. Import `TaboolaWidget`
      ```java
@@ -130,40 +127,30 @@ In your `Activity` or `Fragment` code:
     FrameLayout frameLayout = (FrameLayout) findViewById(R.id.parent_layout);
     frameLayout.addView(taboolaWidget);
      ```
+
+6. Set the following parameters in your TaboolaWidget instance, before calling fetchContent()
+    ```java
+        taboolaWidget.setPublisher("<publisher-as-supplied-by-taboola>")
+            .setMode("<mode-as-supplied-by-taboola>")
+            .setPlacement("<placement-as-supplied-by-taboola>")
+            .setPageUrl("<public-web-url-which-reflects-the-current-content>")
+            .setPageType("<my-page-type>")
+            .setPageId("<my-page-URI>"); //default value is the relative path of the pageUrl provided.
+    
+    // Optional. Set this parameter only if instructed by your Taboola account manager.
+    taboolaWidget.setTargetType("<my-target-type>");
+    
+    // Optional. Set text size in zoom.
+    taboolaWidget.setTextZoom(<text-size>)
+     ```
      
-4. Request `fetchContent()` to show Taboola Widget recommendations
+7. Request `fetchContent()` to show Taboola Widget recommendations
     ```java
     taboolaWidget.fetchContent();
      ```
-5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
+8. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
-
-
-### 1.3.2 Setting the TaboolaWidget properties in code(Alternative)
-
-Optionally, you can set the TaboolaWidget attributes directly in code, rather than have them set in XML
-
- ```java
-
-// Optional - set your content data parameters via code (instead of XML)
-taboolaWidget.setPublisher("<publisher-as-supplied-by-taboola>")
-        .setMode("<mode-as-supplied-by-taboola>")
-        .setPlacement("<placement-as-supplied-by-taboola>")
-        .setPageUrl("<public-web-url-which-reflects-the-current-content>")
-        .setPageType("<my-page-type>")
-        .setPageId("<my-page-URI>"); //default value is the relative path of the pageUrl provided.
-
-
-// Optional. Set this parameter only if instructed by your Taboola account manager.
-taboolaWidget.setTargetType("<my-target-type>");
-
-// Optional. Set text size in zoom.
-taboolaWidget.setTextZoom(<text-size>)
-
-// fetch and display recommendations if not already fetched, taboolaWidget.fetchContent();
- ```
-
-### 1.5. Intercepting recommendation clicks
+### 1.4. Intercepting recommendation clicks
 
 The default click behavior of TaboolaWidget is as follows:
 
@@ -180,7 +167,7 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic);
 public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
  ```
 
-##### 1.5.1. taboolaViewItemClickHandler
+##### 1.4.1. taboolaViewItemClickHandler
 
 This method will be called every time a user clicks on a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
 
@@ -190,7 +177,7 @@ This method will be called every time a user clicks on a recommendation, right b
 `isOrganic` indicates whether the item clicked was an organic content recommendation or not.
 **The best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which will show that piece of content.**
 
-##### 1.5.1.1. Example:
+Example:
  ```java
 @Override
 public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
