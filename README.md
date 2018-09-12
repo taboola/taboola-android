@@ -52,50 +52,92 @@ implement latest version
  ```
 ## 1.3 Displaying Taboola recommendations widget 
 
-The following will describe both xml and code examples for Taboola recommendations widget properties usage.
+The following step describes two **alternative** integration flows: XML and Java code. These are examples for Taboola recommendations widget properties usage.
+**Note:** In general, Taboola recommends not to use "match_parent" as the TaboolaWidget height. In the following examples you will see the height is set to 600dp. As other choices in this sample integration, that's an arbitrary value. Feel free to set it to whichever reasonable height you reqiure. 
+**Note:** `TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
 
-### 1.3.1 Displaying Taboola recommendations widget properties in xml
+### 1.3.1 Displaying Taboola Widget
+#### 1.3.1.1 XML Integration
+In your `Activity` or `Fragment` layout xml file:
+1. Include the XML decleration for taboola
+     ```XML decleration
+     xmlns:taboola="http://schemas.android.com/apk/res-auto"
+     ```
+2. Include the TaboolaWidget Tag as follows
+     ```xml
+     <!-- Specify target_type only if it's specified by your Taboola account manager. -->
+     <com.taboola.android.TaboolaWidget
+        android:id="@+id/taboola_view"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        ...
+        />
+     ```
+ 3.
+      ```xml
+     <!-- Specify target_type only if it's specified by your Taboola account manager. -->
+     <com.taboola.android.TaboolaWidget
+        ...
+        taboola:publisher="<publisher-as-supplied-by-taboola>"
+        taboola:mode="<mode-as-supplied-by-taboola>"
+        taboola:placement="<placement-as-supplied-by-taboola>"
+        taboola:url="<public-web-url-which-reflects-the-current-content>
+        taboola:page_type="<my-page-type>"
+        taboola:target_type="<my-target-type>"
+        />
+     ```
+ 4. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `url`, `page_type`, `target_type`)
 
-To include Taboola recommendations in your app just add `com.taboola.android.TaboolaWidget` to your UI.
-`TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
-
-1.a Include the XML block in your `Activity` or `Fragment` layout
-
- ```xml
- <!-- Specify target_type only if it's specified by your Taboola account manager. -->
- <com.taboola.android.TaboolaWidget
-    android:id="@+id/taboola_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"                                    
-    taboola:publisher="<publisher-as-supplied-by-taboola>"
-    taboola:mode="<mode-as-supplied-by-taboola>"
-    taboola:placement="<placement-as-supplied-by-taboola>"
-    taboola:url="<public-web-url-which-reflects-the-current-content>"
-    taboola:page_type="<my-page-type>"
-    taboola:target_type="<my-target-type>"
-    />
- ```
- 1.b Include the XML decleration for taboola
- ```XML decleration
- xmlns:taboola="http://schemas.android.com/apk/res-auto"
- ```
-2. Replace the attribute values in the XML according to the values provided by your Taboola account manager (`publisher`, `mode`, `placement`, `url`, `page_type`, `target_type`)
-
-3. In your `Activity` or `Fragment` code, declare an instance on `TaboolaWidget`
-
- ```java
-import com.taboola.android.TaboolaWidget;
-//...
-private TaboolaWidget taboolaWidget;
- ```
-
-4. In your `Activity` `OnCreate` or `Fragment` `OnCreateView`, assign the inflated `TaboolaWidget` defined in the XML to the `TaboolaWidget` declared in the previous step, and then fetch the display of recommendations
- ```java
-taboolaWidget = (TaboolaWidget) findViewById(R.id.taboola_view);
-taboolaWidget.fetchContent();
- ```
-
+In your `Activity` or `Fragment` code:
+1. Import `TaboolaWidget`
+     ```java
+    import com.taboola.android.TaboolaWidget;
+     ```
+2. Declare an class member instance `TaboolaWidget`
+    ```java
+    private TaboolaWidget taboolaWidget;
+     ```
+3. In your `Activity`'s `OnCreate()` or `Fragment`'s `OnCreateView()`, find the `TaboolaWidget` defined in the XML
+     ```java
+    taboolaWidget = (TaboolaWidget) findViewById(R.id.taboola_view);
+     ```
+4. Request `fetchContent()` to show Taboola Widget recommendations
+    ```java
+    taboolaWidget.fetchContent();
+     ```
 5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
+
+#### 1.3.1.2 Java Integration
+In your `Activity` or `Fragment` code:
+1. Import `TaboolaWidget`
+     ```java
+    import com.taboola.android.TaboolaWidget;
+     ```
+2. Declare an class member instance `TaboolaWidget`
+    ```java
+    private TaboolaWidget taboolaWidget;
+     ```
+3. In your `Activity`'s `OnCreate()` or `Fragment`'s `OnCreateView()`, create a new TaboolaWidget instance
+     ```java
+    taboolaWidget = new TaboolaWidget(<Context>);
+     ```
+4. Assign LayoutParams to TaboolaWidget
+     ```java
+    taboolaWidget.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 600));
+     ```
+5. Add TaboolaWidget to your layout (This example assumes your parent layout is a FrameLayout with an arbitrary id `parent_layout`)
+     ```java
+    FrameLayout frameLayout = (FrameLayout) findViewById(R.id.parent_layout);
+    frameLayout.addView(taboolaWidget);
+     ```
+     
+4. Request `fetchContent()` to show Taboola Widget recommendations
+    ```java
+    taboolaWidget.fetchContent();
+     ```
+5. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
+
+
 
 ### 1.3.2 Setting the TaboolaWidget properties in code(Alternative)
 
