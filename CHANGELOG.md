@@ -1,8 +1,15 @@
 # Change Log
 
+## [2.0.27] - 2018-09-04
+### Fixed
+- Prevent crash in case where not delivering WebView attached to window
+
+# Change Log
+
 ## [2.0.25] - 2018-09-04
 ### Fixed
 - Prevent crash in case where not delivering WebView attached to window
+### Added
 - Added logs for null context state
 - Added support for notify-clientEvent
 - Height & Width added to SDK-API
