@@ -156,11 +156,11 @@ In your `Activity` or `Fragment` code:
 
 ### 2.1. Intercepting recommendation clicks
 
-##### The default click behaviour of TaboolaWidget is as follows:
+##### 2.1.1. The default click behaviour of TaboolaWidget is as follows:
 * On devices where `Chrome Custom Tabs` are supported - Taboola will open the recommendation in a Chrome Custom Tab (in-app)
 * Otherwise - Taboola will open the recommendation in the default system web browser (outside of the app)
 
-##### Overriding default behaviour:
+##### 2.1.2. Overriding default behaviour:
 `TaboolaWidget` allows app developers to change the default behaviour when a user clicks on a Taboola Recommendation (For example: If you wish to create a click-through or to override the default way of opening the recommended article).
 
 In order to intercept clicks
@@ -191,27 +191,35 @@ In order to intercept clicks
     ```    
 
 
-##### 1.4.1. taboolaViewItemClickHandler
+##### 2.1.3. Event: taboolaViewItemClickHandler
+`boolean taboolaViewItemClickHandler(String url, boolean isOrganic)`
+This method will be called every time a user clicks on a Taboola Recommendation, right before it is sent to Android OS for relevant action resolve. The return value of this method allows you to control further system behaviour (after your own code executes).
 
-This method will be called every time a user clicks on a recommendation, right before triggering the default behavior with `Intent.ACTION_VIEW`. The app can intercept the click there, and should return a `boolean` value.
+###### 2.1.3.1 `url:`
+Original click url.
+###### 2.1.3.2 `isOrganic:` 
+Indicates whether the item clicked was an organic content Taboola Recommendation or not.
+(The **best practice** would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which will show that piece of content).
+###### 2.1.3.3 `Return value:`
+* Returning **`false`** - Aborts the click's default behavior. The app should display the Taboola Recommendation content on its own (for example, using an in-app browser).
+* Returning **`true`** - The click will be a standard one and will be sent to the Android OS for default behaviour.
+**Note:** Sponsored item clicks (non-organic) are not overridable!
 
-* Return **`false`** - abort the default behavior, the app should display the recommendation content on its own (for example, using an in-app browser). (Since 1.2.1 aborts only for organic items!)
-* Return **`true`** - this will allow the app to implement a click-through and continue to the default behaviour.
-
-`isOrganic` indicates whether the item clicked was an organic content recommendation or not.
-**The best practice would be to suppress the default behavior for organic items, and instead open the relevant screen in your app which will show that piece of content.**
-
-Example:
- ```java
+###### 2.1.3.4 `Example:`
+```java
 @Override
 public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
+    ...
     if (isOragnic){
+        ...
         showInAppContent(url);
         return false;
     }
     return true;
 }
- ```
+```
+
+
 ### 1.6. How to set TaboolaView height and scroll:
 #### 1.6.1 For widget:
 * Choose between fixed or automatic height
