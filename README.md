@@ -4,11 +4,12 @@
 
 ## Table Of Contents
 1. [Getting Started](#1-getting-started)
-2. [Example App](#2-example-app)
-3. [SDK Reference](#3-sdk-reference)
-4. [GDPR](#4-gdpr)
-5. [Proguard](#5-proguard)
-6. [License](#6-license)
+2. [Additional Integration Information](#2-additional-integration-information)
+3. [Example App](#3-example-app)
+4. [SDK Reference](#4-sdk-reference)
+5. [GDPR](#5-gdpr)
+6. [Proguard](#6-proguard)
+7. [License](#7-license)
 
 
 ## 1. Getting Started
@@ -219,12 +220,47 @@ public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
 }
 ```
 
+##### 2.1.4. Event: taboolaViewResizeHandler
+`void taboolaViewResizeHandler(TaboolaWidget taboolaWidget, int height)`
+This method will be called if TaboolaWidget will resize itself.
+###### 2.1.4.1 `taboolaWidget:`
+The specific instance of TaboolaWidget which height has changed.
 
-### 1.6. How to set TaboolaView height and scroll:
+###### 2.1.4.2 `height:`
+The new height of the widget, after resize (in pixels) .
+
+###### 2.1.4.3 `Example:`
+```java
+@Override
+public void taboolaViewResizeHandler(TaboolaWidget taboolaWidget, int height) {
+    ...
+    //Change layout - optional
+    ...
+}
+```
+
+### 2.2. Controlling TaboolaWidget height:
+This section aims to elaborate on how TaboolaWidget height changes work.
+**Note:** There is a difference in approach when showing different types of content in TaboolaWidget.
+
+##### Widget:
+
+##### Feed:
+
+
+### 2.3. Controlling TaboolaWidget scroll interception:
+This section will explain how scroll interception works:
+**Note:** There is a difference in approach when showing different types of content in TaboolaWidget.
+
+
+
+
+
+
 #### 1.6.1 For widget:
 * Choose between fixed or automatic height
 
-#### Automatic height resize
+##### Automatic height resize
 By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
 The SDK will automatically decide the height, so you don’t need to give it.
 
@@ -237,7 +273,7 @@ The SDK will automatically decide the height, so you don’t need to give it.
 taboolaView. setInterceptScroll(false); // This is the default, no need to add this code
 ```
 
-#### Fixed height:
+##### Fixed height:
 
  * Set the TaboolaView frame(The most important is the height)
 ```
