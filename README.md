@@ -12,7 +12,7 @@
 
 
 ## 1. Getting Started
-##### This step describes two **alternative** integration flows to setup and show TaboolaWidget: XML and Java code.
+##### This section aims to provide the minimum steps required to displaying TaboolaWidget in your app.
 
 ### 1.1. Minimum requirements
 
@@ -52,6 +52,7 @@ implement latest version
  </activity>
  ```
 ## 1.3 Displaying TaboolaWidget
+##### This step describes two **alternative** integration flows to setup and show TaboolaWidget: XML and Java code.
 **Note:** In general, Taboola recommends not to use "match_parent" as the TaboolaWidget height. In the following examples you will see the height is set to 600dp. As other choices in this sample integration, that's an arbitrary value. Feel free to set it to whichever reasonable height you reqiure. 
 **Note:** `TaboolaWidget` subclass `WebView` behaves just like any other standard Android view.
 
@@ -96,7 +97,7 @@ In your `Activity` or `Fragment` code:
      ```
 3. In your `Activity`'s `OnCreate()` or `Fragment`'s `OnCreateView()`, find the `TaboolaWidget` defined in the XML
      ```java
-    taboolaWidget = (TaboolaWidget) findViewById(R.id.taboola_view);
+    taboolaWidget = (TaboolaWidget) <Activity>.findViewById(R.id.taboola_view);
      ```
 4. Request `fetchContent()` to show Taboola Widget recommendations
     ```java
@@ -124,7 +125,7 @@ In your `Activity` or `Fragment` code:
      ```
 5. Add TaboolaWidget to your layout (This example assumes your parent layout is a FrameLayout with an arbitrary id `parent_layout`)
      ```java
-    FrameLayout frameLayout = (FrameLayout) findViewById(R.id.parent_layout);
+    FrameLayout frameLayout = (FrameLayout) <Activity>.findViewById(R.id.parent_layout);
     frameLayout.addView(taboolaWidget);
      ```
 
@@ -150,22 +151,45 @@ In your `Activity` or `Fragment` code:
      ```
 8. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
-### 1.4. Intercepting recommendation clicks
+## 2. Additional Integration Information
+##### This section aims to elaborate on a few optional points in the integration.
 
-The default click behavior of TaboolaWidget is as follows:
+### 2.1. Intercepting recommendation clicks
 
-* On devices where Chrome custom tab is supported - open the recommendation in a chrome custom tab (in-app)
-* Otherwise - open the recommendation in the system default web browser (outside of the app)
+##### The default click behaviour of TaboolaWidget is as follows:
+* On devices where `Chrome Custom Tabs` are supported - Taboola will open the recommendation in a Chrome Custom Tab (in-app)
+* Otherwise - Taboola will open the recommendation in the default system web browser (outside of the app)
 
-`TaboolaWidget` allows app developers to intercept recommendation clicks in order to create a click-through or to override the default way of opening the recommended article.
+##### Overriding default behaviour:
+`TaboolaWidget` allows app developers to change the default behaviour when a user clicks on a Taboola Recommendation (For example: If you wish to create a click-through or to override the default way of opening the recommended article).
 
-In order to intercept clicks, you should implement the interface `com.taboola.android.listeners.TaboolaEventListener` and connect `TaboolaWidget` to your event listener. The `Activity` or `Fragment` in which `TaboolaWidget` is displayed might be a good candidate to implement `TaboolaEventListener`.
+In order to intercept clicks
+1. Implement the interface `com.taboola.android.listeners.TaboolaEventListener` 
+    1.1 `TaboolaEventListener` include the methods:
+     ```java
+    public boolean taboolaViewItemClickHandler(String url, boolean isOrganic);
+    public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
+     ```
+    1.2 Example implementation:
+    In the same Activity/Fragment as `TaboolaWidget` instance:
+     ```java
+    TaboolaEventListener taboolaEventListener = new TaboolaEventListener() {
+    @Override
+    public boolean taboolaViewItemClickHandler(String url, boolean isOrganic) {
+        //Code...
+        return false;
+    }
 
-`TaboolaEventListener` include the methods:
- ```java
-public boolean taboolaViewItemClickHandler(String url, boolean isOrganic);
-public void taboolaViewResizeHandler(TaboolaWidget widget, int height);
- ```
+    @Override
+    public void taboolaViewResizeHandler(TaboolaWidget taboolaWidget, int height) {
+        //Code...
+    }};
+     ```    
+2. Connect the event listener to your `TaboolaWidget` instance. 
+    ```java
+    taboolaWidget.setTaboolaEventListener(taboolaEventListener);
+    ```    
+
 
 ##### 1.4.1. taboolaViewItemClickHandler
 
