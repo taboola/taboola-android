@@ -313,6 +313,26 @@ In order to catch those notifications, you can use the class `com.taboola.androi
 LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotificationReceiver);
  ```
 
+### 2.5 Listening to ScrollToTop event
+A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
+#### 2.5.1 Registering a ScrollToTopListener
+This snippet shows how to register a scrollToTopListener
+     ```java
+      taboolaWidget.registerScrollToTopListener(new ScrollToTopListener() {
+              @Override
+              public void onTaboolaWidgetOnTop() {
+                  //Code..
+              }
+          });
+     ```
+
+#### 2.5.2 Unregistering a ScrollToTopListener
+This snippet shows how to unregister a ScrollToTopListener.
+     ```java
+      taboolaWidget.unregisterScrollToTopListener();
+     ```
+
+
 ## 3. Example App
 This repository includes an example Android app which uses the Taboola SDK. 
 To use it:
@@ -366,12 +386,6 @@ Change only if it's specified by your Taboola account manager.
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
-##### `public void registerScrollToTopListener(ScrollToTopListener scrollToTopListener)`
-**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
-
-##### `public void unregisterScrollToTopListener();`
-**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
-
 ##### `public void fetchContent()`
 **Mandatory**. After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
 
@@ -386,6 +400,12 @@ Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.an
 
 ##### `public void setInterceptScroll(boolean interceptScroll)`
 **Optional**. Set whether the widget should handle the scroll automatically (see the feed section).
+
+##### `public void registerScrollToTopListener(ScrollToTopListener scrollToTopListener)`
+**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
+
+##### `public void unregisterScrollToTopListener();`
+**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
 
 ## 5. GDPR
 
