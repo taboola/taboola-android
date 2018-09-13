@@ -366,11 +366,6 @@ Change only if it's specified by your Taboola account manager.
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
-##### `public TaboolaWidget setOptionalModeCommands(HashMap<String, String> optionalModeCommands)`
-**Optional**. Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
-Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
-(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
-
 ##### `public void registerScrollToTopListener(ScrollToTopListener scrollToTopListener)`
 **Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
 
