@@ -153,7 +153,9 @@ In your `Activity` or `Fragment` code:
 8. Run your app, your `Activity`/`Fragment` should now show Taboola recommendations.
 
 ## 2. Additional Integration Information
-##### This section aims to elaborate on a few optional points in the integration.
+##### This section aims to elaborate on a few optional points in the integration. 
+Especially addressed is how `TaboolaWidget` may resize its height, after loading recommendations, to make sure that the full content is displayed (based on the actual widget `mode` loaded). After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the `TaboolaEventListener`, to allow the host app to adjust its layout to the changes. (This behavior may be disabled by setting the property `autoResizeHeight` to `false`.)
+
 
 ### 2.1. Intercepting recommendation clicks
 
@@ -238,98 +240,47 @@ public void taboolaViewResizeHandler(TaboolaWidget taboolaWidget, int height) {
     ...
 }
 ```
-
 ### 2.2. Controlling TaboolaWidget height:
-This section aims to elaborate on how TaboolaWidget height changes work.
+This section explains how TaboolaWidget height changes work.
+`New Term: Feed:` One option for TaboolaWidget is to display its content in the form of an endless feed. 
 **Note:** There is a difference in approach when showing different types of content in TaboolaWidget.
 
 ##### Widget:
+By default, TaboolaWidget automatically adjusts its own height in runtime to show its entire content.
+If you wish to disable automatic size changes, add this line to your code:
+```
+ taboolaWidget.setAutoResizeHeight(false);
+```
 
 ##### Feed:
+By default, TaboolaView automatically adjusts its own height in runtime to show the entire widget.
+Calling setAutoResizeHeight() has no effect.
 
+To get the automatic height:
+```
+taboolaWidget.getHeight();
+```
 
 ### 2.3. Controlling TaboolaWidget scroll interception:
-This section will explain how scroll interception works:
+This section explains how scroll interception works.
+`Feed:` One option for TaboolaWidget is to display its content in the form of an endless feed. 
+TaboolaWidget is a custom webview. The feed is endless and has a scroll functionality. When implementing feed, the view has a fixed size, usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
 **Note:** There is a difference in approach when showing different types of content in TaboolaWidget.
 
+##### Widget:
+By Default, TaboolaWidget does not intercept user scroll. If you wish to enable scroll inside the widget, add this line to your code:
+```
+taboolaView.setInterceptScroll(true);
+```
 
-
-
-
-
-#### 1.6.1 For widget:
-* Choose between fixed or automatic height
-
-##### Automatic height resize
+##### Feed:
 By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
-The SDK will automatically decide the height, so you don’t need to give it.
-
-```
- taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
-```
-
-```
-//Disable scroll inside the widget
-taboolaView. setInterceptScroll(false); // This is the default, no need to add this code
-```
-
-##### Fixed height:
-
- * Set the TaboolaView frame(The most important is the height)
-```
- taboolaView.setAutoResizeHeight(false);
-```
-
-```
-//Enable scroll inside the widget
-taboolaView. setInterceptScroll(true);
-```
-
-#### 1.6.2 For Feed:
-Our widget is a custom webview. The feed is endless and it has a scroll functionality.When implementing feed, the view has a fixed size, usually in the bottom of the screen. When the app is scrolled and the view is taking up all the screen, the app scroll should hand over the scroll to our view (inner scroll of the webview).
-
 ```
 // To enable scroll switch between the scrollView and taboolaView
-taboolaView. setInterceptScroll(true);
-```
-#### Automatic height
-By default, TaboolaView automatically adjusts its own height in run time to show the entire widget.
-
-```
-//To get the automatic height
-taboolaView.widgetHeight;
-```
-In collectionView or tabolaView, set your cell height with ```taboolaView.widgetHeight;```
-
-```
-taboolaView.setAutoResizeHeight(true); // This is the default, no need to add this code
+taboolaView.setInterceptScroll(true);
 ```
 
-```
-//Disable scroll inside the widget
-taboolaView. setScrollEnabled(false); //This is the default, no need to add this code
-```
-####  Fixed height:
-
-* Set the TaboolaView frame (The most important is the height).
-* In CollectionView or tableView, set the cell height the same to tabolaView.
-
-```
-taboolaView.setAutoResizeHeight(false);
-```
-```
-//Enable scroll inside the widget
-taboolaView. setScrollEnabled(true);
-```
-
-### 1.7. Handling Taboola widget resize
-
-`TaboolaWidget` may resize its height after loading recommendations, to make sure that the full content is displayed (based on the actual widget `mode` loaded).
-
-After resize, `TaboolaWidget` will call `taboolaViewResizeHandler` method of the `TaboolaEventListener`, to allow the host app to adjust its layout to the changes. (This behavior may be disabled by setting the property `autoResizeHeight` to `false`.)
-
-### 1.8. Catching global notifications (broadcasts) from TaboolaWidget
-
+### 2.4. Catching global notifications (broadcasts) from TaboolaWidget
 `TaboolaWidget` fires app level broadcasts to notify registered objects within the app about certain event. Catching those events might be useful for implementing custom event mediation adapters for ad platforms not natively supported by Taboola Android SDK.
 
 These are the types of broadcasts sent by TaboolaWidget:
