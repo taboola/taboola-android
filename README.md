@@ -329,7 +329,7 @@ To use it:
 In case you encounter some issues while integrating the SDK into your app, try to recreate the scenario within the example app. This might help to isolate the problems. For more help, you would be able to send the example app with your recreated issue to Taboola's support.
 
 ## 4. SDK Reference - TaboolaWidget
-## `Notice: my definitions here might be incorrect/innacurate`
+## `Notice: Dear reviewer, my definitions here might be incorrect/innacurate`
 ##### `public TaboolaWidget setPublisher(String publisher)`
 **Mandatory**. Sets the `publisher` (The name of your application in Taboola Admin)
 
@@ -363,9 +363,13 @@ Change only if it's specified by your Taboola account manager.
 
 ##### `public TaboolaWidget setOptionalPageCommands(HashMap<String, String> optionalPageCommands)`
 **Optional**. Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
+Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
+(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
 ##### `public TaboolaWidget setOptionalModeCommands(HashMap<String, String> optionalModeCommands)`
 **Optional**. Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
+Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
+(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
 ##### `public void registerScrollToTopListener(ScrollToTopListener scrollToTopListener)`
 **Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
@@ -381,10 +385,6 @@ Change only if it's specified by your Taboola account manager.
 
 ##### `public void setLogLevel(Logger.Level logLevel)`
 **Optional**. Set level of log output of the widget. (default level is `ERROR`)
-
-##### `public void pushCommands(HashMap<String, String> arrCommands)`
-Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
-(Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
 ##### `public void reset()`
 **Optional**. Resets the `TaboolaWidget`- All content and pushed commands are cleared. New commands must be pushed before fetching data again.
