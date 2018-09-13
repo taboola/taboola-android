@@ -328,78 +328,69 @@ To use it:
 ##### 3.3 Example App As Troubleshooting Helper:
 In case you encounter some issues while integrating the SDK into your app, try to recreate the scenario within the example app. This might help to isolate the problems. For more help, you would be able to send the example app with your recreated issue to Taboola's support.
 
-## 4. SDK Reference
-### 4.1. Public Properties
-##### `String publisher`
+## 4. SDK Reference - TaboolaWidget
+## `Notice: my definitions here might be incorrect/innacurate`
+##### `public TaboolaWidget setPublisher(String publisher)`
+**Mandatory**. Sets the `publisher` (The name of your application in Taboola Admin)
 
-Mandatory. Sets the `publisher`  (can also be set via XML as `publisher`)
+##### `public TaboolaWidget setMode(String mode)`
+**Mandatory**. Sets the widget display `mode` (The name of your application in Taboola Admin)
 
-##### `String mode`
+##### `public TaboolaWidget setPlacement(String placement)`
+**Mandatory**. Sets the widget `placement` (can also be set via XML as `placement`)
 
-Mandatory. Sets the widget display `mode` (can also be set via XML as `mode`)
+##### `public TaboolaWidget setPageType(String pageType)`
+**Mandatory**. (Can also be set via XML as `page_type`)
 
-##### `String placement`
+##### `public TaboolaWidget setPageUrl(String pageUrl)`
+**Mandatory**. (Can also be set via XML as `url`)
 
-Mandatory. Sets the widget `placement` (can also be set via XML as `placement`)
-
-##### `String pageType`
-
-Mandatory. (Can also be set via XML as `page_type`)
-
-##### `String pageUrl`
-
-Mandatory. (Can also be set via XML as `url`)
-
-##### `String targetType`
-
-Optional. Default: `"mix"`. (can also be set via XML as `target_type`).
+##### `public TaboolaWidget setTargetType(String targetType)`
+**Optional**. Default: `"mix"`. (can also be set via XML as `target_type`).
 Change only if it's specified by your Taboola account manager.
 
-##### `boolean itemClickEnabled`
+##### `public boolean isItemClickEnabled()` - @Deprecated
+**Optional**. Default: `true`. (can also be set via XML as `item_click_enabled`)
 
-Optional. Default: `true`. (can also be set via XML as `item_click_enabled`)
+##### `public TaboolaWidget setItemClickEnabled(boolean enabled)` - @Deprecated
+**Optional**.  Enables/Disables click propogation inside TaboolaWidget. 
 
-##### `boolean autoResizeHeight`
+##### `public TaboolaWidget setAutoResizeHeight(boolean shouldAutoResize)`
+**Optional**. Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires (can also be set via XML as `auto_resize_height`)
 
-Default: true. Determines whether `TaboolaWidget` may resize when the loaded content requires (can also be set via XML as `auto_resize_height`)
+##### `public TaboolaWidget setTaboolaEventListener(TaboolaEventListener taboolaEventListener)`
+**Optional**. Attaches a `TaboolaEventListener` to the `TaboolaWidget`. Allows intercepting clicks and handle height resize events
 
-##### `TaboolaEventListener taboolaEventListener`
+##### `public TaboolaWidget setOptionalPageCommands(HashMap<String, String> optionalPageCommands)`
+**Optional**. Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
-Optional. Attaches a `TaboolaEventListener` to the `TaboolaWidget`. Allows intercepting clicks and handle height resize events
+##### `public TaboolaWidget setOptionalModeCommands(HashMap<String, String> optionalModeCommands)`
+**Optional**. Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
 
-##### `HashMap<String, String> optionalPageCommands`
-Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
+##### `public void registerScrollToTopListener(ScrollToTopListener scrollToTopListener)`
+**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
 
-##### `HashMap<String, String> optionalModeCommands`
-Allows pushing commands to the `TaboolaWidget`, as used in the Taboola JavaScript API
-
-##### `ScrollToTopListener`
-Optional. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
-
-
-### 4.2. Public methods
+##### `public void unregisterScrollToTopListener();`
+**Optional**. A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
 
 ##### `public void fetchContent()`
-
-After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
-
-##### `public void reset()`
-
-Resets the `TaboolaWidget`- All conents and pushed commands are cleared. New commands must be pushed before fetching data again.
+**Mandatory**. After initializing the `TaboolaWidget`, this method should be called to actually fetch the recommendations
 
 ##### `public void refresh()`
-
-Refreshes the recommendations displayed on the `TaboolaWidget`.
+**Optional**. Refreshes the recommendations displayed on the `TaboolaWidget`.
 
 ##### `public void setLogLevel(Logger.Level logLevel)`
-Set level of log output of the widget. (default level is `ERROR`)
+**Optional**. Set level of log output of the widget. (default level is `ERROR`)
 
 ##### `public void pushCommands(HashMap<String, String> arrCommands)`
 Sets the `TaboolaWidget` attributes. You can use keys from class `com.taboola.android.utils.Const`
 (Same as setting every attribute individually via `setMode(String mode)`, `setPublisher(String publisher)`, etc.)
 
-##### `setInterceptScroll`
-Set whether the widget should handle the scroll automatically (see the feed section).
+##### `public void reset()`
+**Optional**. Resets the `TaboolaWidget`- All content and pushed commands are cleared. New commands must be pushed before fetching data again.
+
+##### `public void setInterceptScroll(boolean interceptScroll)`
+**Optional**. Set whether the widget should handle the scroll automatically (see the feed section).
 
 ## 5. GDPR
 
