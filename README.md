@@ -6,11 +6,10 @@
 1. [Getting Started](#1-getting-started)
 2. [Additional Integration Information](#2-additional-integration-information)
 3. [Example App](#3-example-app)
-4. [SDK Reference](#4-sdk-reference)
+4. [SDK Reference](#4-sdk-reference---taboolawidget)
 5. [GDPR](#5-gdpr)
 6. [Proguard](#6-proguard)
 7. [License](#7-license)
-
 
 ## 1. Getting Started
 ##### This section aims to provide the minimum steps required to displaying TaboolaWidget in your app.
@@ -414,19 +413,13 @@ In order to support the The EU General Data Protection Regulation (GDPR - https:
 ### 5.1. How to set the flag in the SDK integration
 Below you can find the way how to set the flag on Android SDK Standard we support. It's recommended to put these lines alongside the other settings, such as publisher name, etc
 
-```javascript
-// Sample code
-   HashMap<String, String> optionalPageCommands = new HashMap<>();
-   TaboolaWidget taboola = new TaboolaWidget(getContext());
-   taboola.setPublisher("the-publisher-name")
-           .setMode("thumbnails-a")
-           .setPageType("home")
-           .setPageUrl("http://www.example.com/")
-           .setPlacement("Below Homepage Thumbnails");
-       optionalPageCommands.put("user_opt_out","true");
-       Taboola.setOptionalPageCommands(optionalPageCommands);
+ ```javascript
+    ...
+    HashMap<String, String> optionalPageCommands = new HashMap<>();
+    optionalPageCommands.put("user_opt_out","true");
+    taboolaWidget.setOptionalPageCommands(optionalPageCommands);
+ ```
 
-```
 
 ## 6. ProGuard
 You can find proguard rules for Taboola Widget in [proguard-taboola-widget.pro](app/proguard-taboola-widget.pro) file.
