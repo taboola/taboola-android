@@ -350,19 +350,19 @@ In case you encounter some issues while integrating the SDK into your app, try t
 ## 4. SDK Reference - TaboolaWidget
 ## `Notice: Dear reviewer, my definitions here might be incorrect/innacurate`
 ##### `public TaboolaWidget setPublisher(String publisher)`
-**Mandatory**. Sets the `publisher` (The name of your application in Taboola Admin)
-
-##### `public TaboolaWidget setMode(String mode)`
-**Mandatory**. Sets the widget display `mode` (The name of your application in Taboola Admin)
+**Mandatory**. Sets your account name in the Widget (aka, the `publisher`)
 
 ##### `public TaboolaWidget setPlacement(String placement)`
-**Mandatory**. Sets the widget `placement` (can also be set via XML as `placement`)
+**Mandatory**. As a part of Taboola's integration we're defining different blocks of UI in your app to be displayed in different placements, each of those will hold a meaningful name. Taboola's configuration relies on the placement name to serve correct content & UI correctly.
+
+##### `public TaboolaWidget setMode(String mode)`
+**Mandatory**. "Mode: is the arrangment of content items users will see in the Widget. Essentially, the UI Layout of your Widget.
 
 ##### `public TaboolaWidget setPageType(String pageType)`
-**Mandatory**. (Can also be set via XML as `page_type`)
+**Mandatory**. The page type is a categorization of the content in the source and target pages in your app. Taboola representitives will give you the best values to improve recommendations returned.
 
 ##### `public TaboolaWidget setPageUrl(String pageUrl)`
-**Mandatory**. (Can also be set via XML as `url`)
+**Mandatory**. If you have a web site with a page that has a parallel content to the native Android page you're showing the widget in, put this page's url in. If you don't have such a page, put the classpath to the relevant Activity (For example: your.package.name.MyActivity1). Note: In any case, work closely with Taboola to put the optimal values here.
 
 ##### `public TaboolaWidget setTargetType(String targetType)`
 **Optional**. Default: `"mix"`. (can also be set via XML as `target_type`).
