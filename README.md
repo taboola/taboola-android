@@ -348,7 +348,7 @@ To use it:
 In case you encounter some issues while integrating the SDK into your app, try to recreate the scenario within the example app. This might help to isolate the problems. For more help, you would be able to send the example app with your recreated issue to Taboola's support.
 
 ## 4. SDK Reference - TaboolaWidget
-## `Notice: Dear reviewer, my definitions here might be incorrect/innacurate`
+
 ##### `public TaboolaWidget setPublisher(String publisher)`
 **Mandatory**. Sets your account name in the Widget (aka, the `publisher`)
 
