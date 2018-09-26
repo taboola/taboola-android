@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.taboola.android.TaboolaWidget;
@@ -16,33 +15,16 @@ import com.taboola.taboolasample.utils.Utils;
 
 import java.util.List;
 
-
 public class ListViewAdapter extends BaseAdapter {
 
     private final List<ListItems.FeedListItem> mData;
 
-    TaboolaWidget mTaboolaWidget;
+    private TaboolaWidget mTaboolaWidget;
 
     public ListViewAdapter(Context context) {
         mData = ListItems.getGeneratedData();
         mTaboolaWidget = new TaboolaWidget(context);
-        buildTaboolaWidget(context);
-    }
-
-    private void buildTaboolaWidget(Context context) {
-        int height = Utils.getTaboolaViewHeight(context);
-        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-        mTaboolaWidget.setLayoutParams(params);
-        mTaboolaWidget
-                .setPageType("article")
-                .setPageUrl("http://www.example.com")
-                .setMode("thumbnails-feed")
-                .setPlacement("feed")
-                .setTargetType("mix")
-                .setPublisher("betterbytheminute-app");
-
-        mTaboolaWidget.setInterceptScroll(true);
-        mTaboolaWidget.fetchContent();
+        Utils.buildTaboolaWidget(context, mTaboolaWidget);
     }
 
 

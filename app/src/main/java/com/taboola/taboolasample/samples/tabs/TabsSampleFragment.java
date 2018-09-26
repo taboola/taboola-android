@@ -1,104 +1,76 @@
 package com.taboola.taboolasample.samples.tabs;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.taboola.android.TaboolaWidget;
 import com.taboola.taboolasample.R;
 import com.taboola.taboolasample.adapters.FragmentsAdapter;
+import com.taboola.taboolasample.utils.Utils;
 
-public class TabsSampleFragment extends Fragment implements TabsContract.TabsView{
-
-    protected TabsContract.TabsPresenter mPresenter = new TabsPresenterImp();
-    private ViewPager mViewPager;
-    private FragmentsAdapter<PageFragment> mAdapter;
+public class TabsSampleFragment extends BaseTabFragment<TabsSampleFragment.SampleTaboolaFragment> {
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    protected void setupViewPagerAdapter(FragmentsAdapter<SampleTaboolaFragment> adapter) {
+        super.setupViewPagerAdapter(adapter);
+        adapter.addFragment(SampleTaboolaFragment.getInstance());
+        adapter.addFragment(SampleTaboolaFragment.getInstance());
+        adapter.addFragment(SampleTaboolaFragment.getInstance());
+    }
 
-        if (mAdapter == null) {
-            mAdapter = new FragmentsAdapter<>(getChildFragmentManager());
+
+    public static class SampleTaboolaFragment extends BaseTaboolaFragment {
+
+        private TaboolaWidget mTaboolaWidget;
+        private boolean mShouldFetch;
+
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setRetainInstance(true);
         }
 
-    }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tabs, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mViewPager = view.findViewById(R.id.album_tabs_viewpager);
-        setupViewPager();
-    }
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_page_sample, container, false);
+        }
 
 
-    private void setupViewPager() {
-        mAdapter.addFragment(PageFragment.getInstance("page 1"));
-        mAdapter.addFragment(PageFragment.getInstance("page 2"));
-        mAdapter.addFragment(PageFragment.getInstance("page 3"));
-        mViewPager.setAdapter(mAdapter);
-        mViewPager.setSaveEnabled(false);
-        mViewPager.setOffscreenPageLimit(mAdapter.getCount());
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            mTaboolaWidget = view.findViewById(R.id.taboola_widget);
+            Utils.buildTaboolaWidget(view.getContext(), mTaboolaWidget);
 
-        final ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                int currentItem = mViewPager.getCurrentItem();
-                mPresenter.setCurrentPage(currentItem);
-                PageFragment fragment = mAdapter.getItem(currentItem);
-                fragment.onPageSelected();
+            if (mShouldFetch) {
+                mShouldFetch = false;
+                mTaboolaWidget.fetchContent();
             }
-        };
-        mViewPager.addOnPageChangeListener(onPageChangeListener);
-        mViewPager.post(() -> onPageChangeListener.onPageSelected(mViewPager.getCurrentItem()));
-    }
+        }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mPresenter.takeView(this);
-        mPresenter.onActivityCreated(savedInstanceState);
-    }
+        @Override
+        public void onPageSelected() {
+            if (mTaboolaWidget == null) {
+                mShouldFetch = true;
+            } else {
+                mTaboolaWidget.fetchContent();
+            }
+        }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mPresenter.onSaveInstanceState(outState);
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        mPresenter.takeView(this);
-        mPresenter.onStart();
-    }
+        public static SampleTaboolaFragment getInstance() {
+            SampleTaboolaFragment baseTaboolaFragment = new SampleTaboolaFragment();
+            Bundle bundle = new Bundle();
+            baseTaboolaFragment.setArguments(bundle);
+            return baseTaboolaFragment;
+        }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        mPresenter.onStop();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mPresenter.onDestroyView();
-    }
-
-    @Override
-    public void setCurrentPage(int currentPage) {
-        mViewPager.setCurrentItem(currentPage, false);
     }
 }

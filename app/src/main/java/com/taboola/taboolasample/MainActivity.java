@@ -17,14 +17,9 @@ import com.taboola.taboolasample.samples.EndlessFeedSampleFragment;
 import com.taboola.taboolasample.samples.ListViewSampleFragment;
 import com.taboola.taboolasample.samples.RecyclerViewSampleFragment;
 import com.taboola.taboolasample.samples.XmlSampleFragment;
-import com.taboola.taboolasample.samples.tabs.PageFragment;
 import com.taboola.taboolasample.samples.tabs.TabsSampleFragment;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, PageFragment.OnFragmentInteractionListener {
-
-    private String mViewId;
-
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,11 +100,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public String getViewID() {
-        if (mViewId == null) {
-            mViewId = Long.toString(System.currentTimeMillis());
-        }
-
-        return mViewId;
-    }
 }

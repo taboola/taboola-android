@@ -1,34 +1,26 @@
 package com.taboola.taboolasample.utils;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.TypedValue;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.taboola.android.TaboolaWidget;
 import com.taboola.android.utils.SdkDetailsHelper;
-import com.taboola.taboolasample.R;
 
 public class Utils {
-    public static int getActionBarHeight(Context context) {
-        int[] textSizeAttr = new int[]{R.attr.actionBarSize};
-        TypedArray a = context.obtainStyledAttributes(new TypedValue().data, textSizeAttr);
-        int height = a.getDimensionPixelSize(0, 0);
-        a.recycle();
-        return height;
-    }
+    public static void buildTaboolaWidget(Context context, TaboolaWidget taboolaWidget) {
+        int height = SdkDetailsHelper.getDisplayHeight(context);
+        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+        taboolaWidget.setLayoutParams(params);
+        taboolaWidget
+                .setPageType("article")
+                .setPageUrl("http://www.example.com")
+                .setMode("thumbnails-feed")
+                .setPlacement("feed-sample-app")
+                .setTargetType("mix")
+                .setPublisher("betterbytheminute-app");
 
-    public static int getStatusBarHeight(Context context) {
-        int resource = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resource > 0) {
-            return context.getResources().getDimensionPixelSize(resource);
-        }
-
-        return 0;
-    }
-
-    public static int getTaboolaViewHeight(Context context) {
-        final int screenHeight = SdkDetailsHelper.getDisplayHeight(context);
-        int statusBarHeight = getStatusBarHeight(context);
-        int actionBarHeight = getActionBarHeight(context);
-        return screenHeight - statusBarHeight - actionBarHeight;
+        taboolaWidget.setInterceptScroll(true);
+        taboolaWidget.fetchContent();
     }
 }

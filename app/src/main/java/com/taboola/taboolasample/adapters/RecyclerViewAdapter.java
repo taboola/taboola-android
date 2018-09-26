@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.utils.SdkDetailsHelper;
 import com.taboola.taboolasample.R;
+import com.taboola.taboolasample.utils.Utils;
 
 import java.util.List;
 
@@ -25,21 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         mData = ListItems.getGeneratedData();
     }
 
-    private static void buildTaboolaWidget(Context context, TaboolaWidget taboolaWidget) {
-        int height = SdkDetailsHelper.getDisplayHeight(context);
-        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-        taboolaWidget.setLayoutParams(params);
-        taboolaWidget
-                .setPageType("article")
-                .setPageUrl("http://www.example.com")
-                .setMode("thumbnails-feed")
-                .setPlacement("feed-sample-app")
-                .setTargetType("mix")
-                .setPublisher("betterbytheminute-app");
 
-        taboolaWidget.setInterceptScroll(true);
-        taboolaWidget.fetchContent();
-    }
 
 
     @Override
@@ -104,7 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         ViewHolderTaboola(TaboolaWidget taboolaWidget) {
             super(taboolaWidget);
-            buildTaboolaWidget(taboolaWidget.getContext(), taboolaWidget);
+            Utils.buildTaboolaWidget(taboolaWidget.getContext(), taboolaWidget);
         }
     }
 

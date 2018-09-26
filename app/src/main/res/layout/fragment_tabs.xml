@@ -10,9 +10,8 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
         <android.support.v4.view.ViewPager
-            android:id="@+id/album_tabs_viewpager"
+            android:id="@+id/tabs_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
