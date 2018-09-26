@@ -1,4 +1,4 @@
-package com.taboola.taboolasample.fragments;
+package com.taboola.taboolasample.samples;
 
 
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.taboola.android.TaboolaWidget;
-import com.taboola.android.utils.SdkDetailsHelper;
 import com.taboola.taboolasample.R;
 
 

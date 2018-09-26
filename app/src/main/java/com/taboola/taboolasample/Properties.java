@@ -1,4 +1,4 @@
-package com.taboola.taboolasample.data;
+package com.taboola.taboolasample;
 
 
 import android.os.Parcel;

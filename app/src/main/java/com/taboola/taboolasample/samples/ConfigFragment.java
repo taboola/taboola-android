@@ -1,4 +1,4 @@
-package com.taboola.taboolasample.fragments;
+package com.taboola.taboolasample.samples;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.utils.Const;
 import com.taboola.android.utils.Logger;
-import com.taboola.taboolasample.data.Properties;
+import com.taboola.taboolasample.Properties;
 import com.taboola.taboolasample.R;
 
 import java.util.HashMap;

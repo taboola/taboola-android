@@ -1,4 +1,4 @@
-package com.taboola.taboolasample.fragments;
+package com.taboola.taboolasample.samples;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ public class RecyclerViewSampleFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_endless_feed_with_list, container, false);
+        return inflater.inflate(R.layout.fragment_rv_sample, container, false);
     }
 
     @Override

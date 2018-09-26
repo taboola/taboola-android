@@ -11,15 +11,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.taboola.taboolasample.fragments.ConfigFragment;
-import com.taboola.taboolasample.fragments.DynamicSampleFragment;
-import com.taboola.taboolasample.fragments.EndlessFeedSampleFragment;
-import com.taboola.taboolasample.fragments.ListViewSampleFragment;
-import com.taboola.taboolasample.fragments.RecyclerViewSampleFragment;
-import com.taboola.taboolasample.fragments.XmlSampleFragment;
+import com.taboola.taboolasample.samples.ConfigFragment;
+import com.taboola.taboolasample.samples.DynamicSampleFragment;
+import com.taboola.taboolasample.samples.EndlessFeedSampleFragment;
+import com.taboola.taboolasample.samples.ListViewSampleFragment;
+import com.taboola.taboolasample.samples.RecyclerViewSampleFragment;
+import com.taboola.taboolasample.samples.XmlSampleFragment;
+import com.taboola.taboolasample.samples.tabs.PageFragment;
+import com.taboola.taboolasample.samples.tabs.TabsSampleFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PageFragment.OnFragmentInteractionListener {
+
+    private String mViewId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,10 @@ public class MainActivity extends AppCompatActivity
                 fragmentToOpen = new ListViewSampleFragment();
                 break;
 
+            case R.id.view_pager_sample:
+                fragmentToOpen = new TabsSampleFragment();
+                break;
+
             default:
                 return false;
         }
@@ -94,5 +103,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String getViewID() {
+        if (mViewId == null) {
+            mViewId = Long.toString(System.currentTimeMillis());
+        }
+
+        return mViewId;
     }
 }

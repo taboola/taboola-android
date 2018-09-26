@@ -1,4 +1,4 @@
-package com.taboola.taboolasample.fragments;
+package com.taboola.taboolasample.samples;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

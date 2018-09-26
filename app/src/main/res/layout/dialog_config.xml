@@ -10,7 +10,7 @@
 
         <variable
             name="properties"
-            type="com.taboola.taboolasample.data.Properties" />
+            type="com.taboola.taboolasample.Properties" />
 
         <variable
             name="requiredFields"

@@ -24,6 +24,10 @@
         <item
             android:id="@+id/lv_sample"
             android:title="@string/lv_sample" />
+
+        <item
+            android:id="@+id/view_pager_sample"
+            android:title="@string/view_pager_sample" />
     </group>
 
 </menu>
