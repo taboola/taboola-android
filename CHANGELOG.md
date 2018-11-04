@@ -1,5 +1,17 @@
 # Change Log
 
+## [2.0.28] - 2018-11-04
+### Added
+ - Added support for horizental scrolling in SDK standard
+ - Added support for 3rd party laibraries when loading images in SDK API
+
+### Changed
+ - The functions `setOptionalModeCommands()` and `pushCommands()` are now deprecated
+ - Minor performace improvements
+
+### Fixed
+ - Minor bug fixes
+
 ## [2.0.27] - 2018-09-04
 ### Fixed
 - Prevent crash in case where not delivering WebView attached to window
