@@ -30,11 +30,6 @@ implement latest version
 
      // include if you are using DFP mediation
      implementation 'com.google.firebase:firebase-ads:11.+'
-
-     // include if you are using MoPub mediation
-     implementation('com.mopub:mopub-sdk-banner:4.16.+@aar') {
-         transitive = true
-     }
  ```
 > ## Notice
 > We encourage developers to use the latest SDK version. In order to stay up-to-date, we suggest to subscribe in order to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
