@@ -35,11 +35,6 @@ dependencies {
 //    // include if you are using DFP mediation
 //    implementation 'com.google.firebase:firebase-ads:11.6.0'
 //
-//    // include if you are using MoPub mediation
-//    implementation('com.mopub:mopub-sdk-banner:4.16.1@aar') {
-//        transitive = true
-//        exclude module: 'libAvid-mopub'
-//        exclude module: 'moat-mobile-app-kit'
 //    }
 
     // dependencies for sample app only
