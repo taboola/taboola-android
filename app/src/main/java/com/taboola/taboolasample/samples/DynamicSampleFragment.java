@@ -1,4 +1,4 @@
-package com.taboola.taboolasample;
+package com.taboola.taboolasample.samples;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.listeners.TaboolaEventListener;
+import com.taboola.taboolasample.R;
 
 
 public class DynamicSampleFragment extends Fragment {

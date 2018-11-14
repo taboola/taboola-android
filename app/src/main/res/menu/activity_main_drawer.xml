@@ -5,17 +5,29 @@
         <item
             android:id="@+id/xml_sample"
             android:checked="true"
-            android:title="@string/drawer_item_title_xml_sample"/>
+            android:title="@string/drawer_item_title_xml_sample" />
         <item
             android:id="@+id/dynamic_sample"
-            android:title="@string/drawer_item_title_dynamic_sample"/>
+            android:title="@string/drawer_item_title_dynamic_sample" />
         <item
             android:id="@+id/configurable_page"
-            android:title="@string/drawer_item_title_configurable_page"/>
+            android:title="@string/drawer_item_title_configurable_page" />
 
         <item
             android:id="@+id/endless_feed_sample"
             android:title="@string/endless_feed" />
+
+        <item
+            android:id="@+id/rv_sample"
+            android:title="@string/rv_sample" />
+
+        <item
+            android:id="@+id/lv_sample"
+            android:title="@string/lv_sample" />
+
+        <item
+            android:id="@+id/view_pager_sample"
+            android:title="@string/view_pager_sample" />
     </group>
 
 </menu>
