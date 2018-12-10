@@ -275,37 +275,41 @@ taboolaWidget.setInterceptScroll(true);
 ```
 
 ### 2.4. Catching global notifications (broadcasts) from TaboolaWidget
-Taboola fires app level broadcasts to notify registered objects within the app about certain events. Catching those events might be useful for implementing custom event mediation adapters for ad platforms not natively supported by Taboola Android SDK.
-
-These are the types of broadcasts sent by Taboola:
-
-* `GlobalNotificationReceiver.TABOOLA_DID_RECEIVE_AD`
-* `GlobalNotificationReceiver.TABOOLA_VIEW_RESIZED`
-* `GlobalNotificationReceiver.TABOOLA_ITEM_DID_CLICK`
-* `GlobalNotificationReceiver.TABOOLA_DID_FAIL_AD`
+Taboola fires app level broadcasts to notify registered objects within the app about certain events. 
 
 In order to catch those notifications, you can use the class `com.taboola.android.globalNotifications.GlobalNotificationReceiver`
 
 1. Create a new `GlobalNotificationReceiver` object in your `Activity`/`Fragment`
 
-2. In `OnResume()` or `onCreate()`, register the `GloablNotificationReceiver` to receive broadcasts from `TaboolaWidget`s
+2. In `OnResume()` register the `GloablNotificationReceiver` using this code
 
      ```java
-    LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-            mGlobalNotificationReceiver,
-            new IntentFilter(GlobalNotificationReceiver.GLOBAL_NOTIFICATIONS_KEY)
-    );
+    @Override
+    public void onResume() {
+        super.onResume();
+        mGlobalNotificationReceiver.registerNotificationsListener(this);
+        mGlobalNotificationReceiver.registerReceiver(getActivity());
+    }
      ```
 
-1. Implement `OnGlobalNotificationsListener` interface - this implementing object will be called whenever a broadcast is received
+3. Implement the interface `OnGlobalNotificationsListener`- include the methods:
+     ```java
+    public void taboolaDidReceiveAd(TaboolaWidget widget);
+    public void taboolaViewResized(TaboolaWidget widget, int height);
+    public void taboolaItemDidClick(TaboolaWidget widget);
+    public void taboolaDidFailAd(TaboolaWidget widget, String reason);
+     ```
 
-2. Register the object which implements `OnGlobalNotificationsListener` with your `GlobalNotificationReceiver` using the method `registerNotificationsListener`
+4. Make sure you unregister the `GloablNotificationReceiver` on `onPause()` using this code:
 
-3. Make sure you unregister `GlobalNotificationReceiver` in `onPause()`/`onDestroy()`
-
- ```java
-LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mGlobalNotificationReceiver);
- ```
+     ```java
+    @Override
+    public void onPause() {
+        super.onPause();
+        mGlobalNotificationReceiver.unregisterNotificationsListener();
+        mGlobalNotificationReceiver.unregisterReceiver(getActivity());
+    } 
+     ```
 
 ### 2.5 Listening to ScrollToTop event
 A callback that notifies when the widget is on the top of the screen and is scrolled up (used for feed handling).
