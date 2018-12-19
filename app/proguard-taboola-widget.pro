@@ -17,4 +17,5 @@
 
 # Always add
 -keepnames class com.taboola.android.integration_verifier.testing.tests.proguard_stub.ProguardVerificationStub
+-keep class com.taboola.android.monitor.** {*;}
 ###---------- End: proguard configuration for Taboola widget  ----------
