@@ -23,13 +23,10 @@
 1. Add the library dependency to your project
 implement latest version
  ```groovy
-     implementation 'com.taboola:android-sdk:2.0.27'
+     implementation 'com.taboola:android-sdk:2.0.29'
 
      // include to have clicks open in chrome tabs rather than in a default browser (mandatory)
      implementation 'com.android.support:customtabs:27.+'
-
-     // include if you are using DFP mediation
-     implementation 'com.google.firebase:firebase-ads:11.+'
  ```
 > ## Notice
 > We encourage developers to use the latest SDK version. In order to stay up-to-date, we suggest to subscribe in order to get github notifications whenever there is a new release. For more information check: https://help.github.com/articles/managing-notifications-for-pushes-to-a-repository/
