@@ -1,8 +1,8 @@
 package com.taboola.taboolasample;
 
 
-import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +11,6 @@ import android.widget.LinearLayout;
 
 import com.taboola.android.TaboolaWidget;
 import com.taboola.android.listeners.TaboolaEventListener;
-import com.taboola.android.utils.Properties;
-import com.taboola.android.utils.SdkDetailsHelper;
-
-import java.util.HashMap;
 
 
 public class DynamicSampleFragment extends Fragment {
@@ -26,17 +22,15 @@ public class DynamicSampleFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_dynamic_sample, container, false);
-
 
         if (mTaboolaView == null) {
             mTaboolaView = new TaboolaWidget(inflater.getContext());
-            buildTaboolaWidget(inflater.getContext(), mTaboolaView);
+            buildTaboolaWidget(mTaboolaView);
         }
 
-        LinearLayout adContainer = (LinearLayout) rootView.findViewById(R.id.ad_container);
+        LinearLayout adContainer = rootView.findViewById(R.id.ad_container);
 
         // Optional. Set targetType only if it's specified by your Taboola account manager
         // taboola.setTargetType("<my-target-type>");
@@ -59,17 +53,14 @@ public class DynamicSampleFragment extends Fragment {
         return rootView;
     }
 
-    static void buildTaboolaWidget(Context context, TaboolaWidget taboolaWidget) {
-        int height = SdkDetailsHelper.getDisplayHeight(context);
-        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+    static void buildTaboolaWidget(TaboolaWidget taboolaWidget) {
+        ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         taboolaWidget.setLayoutParams(params);
         taboolaWidget
-                .setPublisher("betterbytheminute-app")
-                .setMode("thumbnails-sdk3")
+                .setPublisher("sdk-tester")
+                .setMode("alternating-widget-without-video")
                 .setPageType("article")
-                .setPageUrl("http://www.example.com")
-                .setPlacement("Mobile");
-
-        taboolaWidget.setInterceptScroll(true);
+                .setPageUrl("https://blog.taboola.com")
+                .setPlacement("Below Article");
     }
 }
