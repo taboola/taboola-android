@@ -1,4 +1,4 @@
-# PG rules for all Android SDK API versions before version 2.1.0:
+# PG rules for all Android SDK API versions up to version 2.1.0:
 # ===============================================================
 
 # Add project specific ProGuard rules here.
